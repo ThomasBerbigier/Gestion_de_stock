@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {faCheckSquare} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-page-inscription',
   standalone: true,
-  imports: [
-    FaIconComponent
-  ],
+  imports: [FontAwesomeModule],
   templateUrl: './page-inscription.component.html',
   styleUrl: './page-inscription.component.scss'
 })
 export class PageInscriptionComponent {
-
+  protected readonly faCheckSquare = faCheckSquare;
 }
