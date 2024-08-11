@@ -1,0 +1,64 @@
+<div class="row mb-1 custom-border">
+  <div class="col-md-1 border-right d-flex align-items-center justify-content-center my-1">
+    <img src="assets/3d_delivery_box_parcel.jpg" alt="image d'un carton" class="custom-image">
+  </div>
+
+<!-- Details articles  -->
+  <div class="col-md-5 border-right my-1">
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
+      <span>Code article</span>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
+      <span>Désignation</span>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faEuroSign" class="me-2 blue-color"></fa-icon>
+      <span>Prix HT</span>
+    </div>
+    <div class="d-flex align-items-center">
+      <fa-icon [icon]="faEuroSign" class="me-2 blue-color"></fa-icon>
+      <span>Prix TTC</span>
+    </div>
+  </div>
+
+  <!-- Details categorie  -->
+  <div class="col-md-3 border-right my-1">
+    <div class="row">
+      <div class="col-md-2">
+        <fa-icon [icon]="faFontAwesome" class="blue-color"></fa-icon>
+      </div>
+      <div class="col-md-10">
+        <div class="row">
+          <span class="col-md-12">Code catégorie</span>
+          <span class="col-md-12">Description catégorie</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Details action  -->
+  <div class="col-md-3 border-right d-flex align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-md-4">
+        <button type="button" class="btn btn-success">
+          <fa-icon [icon]="faPencil"></fa-icon>
+          Modifier
+        </button>
+      </div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-danger">
+          <fa-icon [icon]="faTrashCan"></fa-icon>
+          Supprimer
+        </button>
+      </div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-primary">
+          <fa-icon [icon]="faEllipsis"></fa-icon>
+          Détails
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

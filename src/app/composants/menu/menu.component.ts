@@ -80,7 +80,7 @@ export class MenuComponent {
           id: '21',
           titre: 'Articles',
           icon: faBarcode,
-          url: ''
+          url: 'Articles'
         },
         {
           id: '22',

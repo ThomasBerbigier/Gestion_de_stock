@@ -11,9 +11,17 @@ body {
 .min-height-80 {
   min-height: 80px;
 }
-
-
-
+.border-right {
+  border-right: 2px solid #9ca1a6;
+}
+.custom-border{
+  border: solid #9ca1a6;
+  border-right: 5px;
+  border-radius: 5px;
+}
+.blue-color {
+  color: #037bfe;
+}
 
 
 /* Importing Bootstrap SCSS file. */
