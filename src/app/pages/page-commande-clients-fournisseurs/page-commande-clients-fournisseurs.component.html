@@ -1,0 +1,41 @@
+<div class="col">
+  <div class="row m-3">
+    <div class="col-md-8 p-0">
+      <h1>Commande clients / fournisseurs</h1>
+    </div>
+    <div class="col-md-4 text-end">
+      <app-boutton-action></app-boutton-action>
+    </div>
+  </div>
+  <div class="accordion mb-1" id="accordionExample">
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <button class="accordion-button row ms-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <app-detail-commande-client-fournisseur></app-detail-commande-client-fournisseur>
+        </button>
+      </div>
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="max-height: 300px; overflow-y: scroll">
+        <div class="accordion-body">
+          <app-detail-commande></app-detail-commande>
+          <app-detail-commande></app-detail-commande>
+          <app-detail-commande></app-detail-commande>
+          <app-detail-commande></app-detail-commande>
+          <app-detail-commande></app-detail-commande>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-6 text-start">
+            <p class="fs-5">X articles commandés</p>
+          </div>
+          <div class="col-md-6 text-end">
+            <p class="fs-5">Total commandes : Xxxx</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3 text-center">
+    <app-pagination></app-pagination>
+  </div>
+</div>

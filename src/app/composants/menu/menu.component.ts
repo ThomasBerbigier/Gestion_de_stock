@@ -100,13 +100,13 @@ export class MenuComponent {
           id: '31',
           titre: 'Clients',
           icon: faCircleUser,
-          url: ''
+          url: 'clients'
         },
         {
           id: '32',
           titre: 'Commandes clients',
           icon: faTruckFast,
-          url: ''
+          url: 'commandesClients'
         }
       ]
     },
@@ -118,15 +118,15 @@ export class MenuComponent {
       sousMenu: [
         {
           id: '41',
-          titre: 'Fournisseur',
+          titre: 'Fournisseurs',
           icon: faAddressBook,
-          url: ''
+          url: 'fournisseurs'
         },
         {
           id: '42',
           titre: 'Commande fournisseur',
           icon: faBusinessTime,
-          url: ''
+          url: 'commandesFournisseurs'
         }
       ]
     },

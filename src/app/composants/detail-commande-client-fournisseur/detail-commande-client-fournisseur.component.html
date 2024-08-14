@@ -1,0 +1,53 @@
+
+<!-- Details commande  -->
+<div class="row mb-1 custom-border">
+  <div class="col-md-1 border-right d-flex align-items-center justify-content-center my-1">
+    <img src="assets/3d_delivery_box_parcel.jpg" alt="image d'un carton" class="custom-image rounded-circle">
+  </div>
+
+  <div class="col-md-5 border-right my-1">
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
+      <span>Nom</span>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
+      <span>Prénom</span>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faPhone" class="me-2 blue-color"></fa-icon>
+      <span>Téléphone</span>
+    </div>
+  </div>
+  <div class="col-md-3 border-right my-1">
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faQrcode" class="me-2 blue-color"></fa-icon>
+      <span>Numéro de commande</span>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faCalendar" class="me-2 blue-color"></fa-icon>
+      <span>Date de commande</span>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faCartArrowDown" class="me-2 blue-color"></fa-icon>
+      <span>Statut de la commande</span>
+    </div>
+  </div>
+  <!-- Details action  -->
+  <div class="col-md-3 border-right d-flex align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-md-4">
+        <button type="button" class="btn btn-success">
+          <fa-icon [icon]="faPencil"></fa-icon>
+          Modifier
+        </button>
+      </div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-danger">
+          <fa-icon [icon]="faTrashCan"></fa-icon>
+          Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

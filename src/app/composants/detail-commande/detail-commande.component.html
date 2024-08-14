@@ -1,0 +1,43 @@
+<div class="row mb-1 custom-border">
+
+  <!-- Details commande  -->
+  <div class="col-md-3 border-right my-1 d-flex align-items-center justify-content-center">
+    <fa-icon [icon]="faQrcode" class="me-2 blue-color"></fa-icon>
+    <span>Code article</span>
+  </div>
+  <div class="col-md-3 border-right my-1 d-flex align-items-center justify-content-center">
+    <div class="row">
+      <span class="col-md-12 fs-5 text-center">
+        <fa-icon [icon]="faInfo" class="blue-color fs-4"></fa-icon>&nbsp;
+        Désignation article
+      </span>
+    </div>
+  </div>
+  <div class="col-md-2 border-right my-1 d-flex align-items-center justify-content-center">
+    <div class="row">
+      <span class="col-md-12 fs-5 text-center">
+        <fa-icon [icon]="faCartShopping" class="me-2 blue-color"></fa-icon>
+        Quantitée commandée
+      </span>
+    </div>
+  </div>
+  <div class="col-md-2 border-right my-1 d-flex align-items-center justify-content-center">
+    <div class="row">
+      <span class="col-md-12 fs-5 text-center">
+        <fa-icon [icon]="faEuroSign" class="me-2 blue-color"></fa-icon>
+        Prix unitaire TTC
+      </span>
+    </div>
+  </div>
+  <!-- Details action  -->
+  <div class="col-md-2 d-flex align-items-center justify-content-center border-right">
+    <div class="row">
+      <div class="col-md-10">
+        <button type="button" class="btn btn-success">
+          <fa-icon [icon]="faEuroSign"></fa-icon>
+          Prix total TTC
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
