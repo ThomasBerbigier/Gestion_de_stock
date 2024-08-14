@@ -1,0 +1,81 @@
+<!-- Contenu de l'accordéon -->
+<div class="row mb-1 custom-border">
+  <div class="col-md-1 border-right d-flex align-items-center justify-content-center my-1">
+    <img src="assets/3d_delivery_box_parcel.jpg" alt="image d'un carton" class="custom-image rounded-circle">
+  </div>
+
+  <div class="col-md-5 border-right my-1">
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
+      <span>Code article</span>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
+      <span>Désignation</span>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <fa-icon [icon]="faEuroSign" class="me-2 blue-color"></fa-icon>
+      <span>Prix HT</span>
+    </div>
+    <div class="d-flex align-items-center">
+      <fa-icon [icon]="faEuroSign" class="me-2 blue-color"></fa-icon>
+      <span>Prix TTC</span>
+    </div>
+  </div>
+
+  <div class="col-md-3 border-right my-1">
+    <div class="d-flex flex-column align-items-center justify-content-center text-center">
+      <fa-icon [icon]="faBoxesStacked" class="blue-color fs-4"></fa-icon>
+      <div class="row">
+        <span class="col-md-12 fs-3">En stock :</span>
+        <span class="col-md-12 fs-4">089</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 border-right d-flex align-items-center justify-content-center">
+    <div class="col-md-4">
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <fa-icon [icon]="faPencil"></fa-icon>
+        Modifier le stock
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Fenêtre Modale -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modification du stock</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulaire à l'intérieur de la modale -->
+        <form>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Quantitée" required>
+          </div>
+          <div class="mb-3">
+            <select class="form-control">
+              <option selected>Sélectionner une opération</option>
+              <option>Ajouter</option>
+              <option>Soustraire</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          <fa-icon [icon]="faXmark"></fa-icon>
+          Annuler
+        </button>
+        <button type="button" class="btn btn-primary">
+          <fa-icon [icon]="faSquarePlus"></fa-icon>
+          Enregistrer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

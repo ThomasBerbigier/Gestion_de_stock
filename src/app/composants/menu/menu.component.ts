@@ -86,7 +86,7 @@ export class MenuComponent {
           id: '22',
           titre: 'Mouvement de stock',
           icon: faArrowRightArrowLeft,
-          url: ''
+          url: 'mouvement-stock'
         }
       ]
     },
