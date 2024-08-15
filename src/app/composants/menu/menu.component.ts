@@ -146,7 +146,7 @@ export class MenuComponent {
           id: '52',
           titre: 'Utilisateur',
           icon: faGears,
-          url: ''
+          url: 'utilisateurs'
         }
       ]
     }

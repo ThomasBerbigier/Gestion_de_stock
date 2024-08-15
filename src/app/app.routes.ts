@@ -19,6 +19,8 @@ import {
 import {PageFournisseurComponent} from "./pages/fournisseur/page-fournisseur/page-fournisseur.component";
 import {PageCategoriesComponent} from "./pages/categories/page-categories/page-categories.component";
 import {NouvelleCategorieComponent} from "./pages/categories/nouvelle-categorie/nouvelle-categorie.component";
+import {PageUtilisateurComponent} from "./pages/utilisateur/page-utilisateur/page-utilisateur.component";
+import {NouvelUtilisateurComponent} from "./pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component";
 
 export const routes: Routes = [
   {
@@ -88,6 +90,14 @@ export const routes: Routes = [
       {
         path: 'nouvelleCategorie',
         component: NouvelleCategorieComponent
+      },
+      {
+        path: 'utilisateurs',
+        component: PageUtilisateurComponent
+      },
+      {
+        path: 'nouvelUtilisateur',
+        component: NouvelUtilisateurComponent
       }
     ]
   }
