@@ -1,0 +1,43 @@
+<div class="col">
+  <div class="row m-3">
+    <div class="col-md-8 p-0">
+      <h1>Liste des catégories</h1>
+    </div>
+    <div class="col-md-4 text-end">
+      <app-boutton-action
+        (clickEvent)="nouvelleCategorie()"
+      ></app-boutton-action>
+    </div>
+  </div>
+  <div class="col m-3">
+    <div class="row m-3">
+      <div class="row col-md-12 custom-border mb-3 p-3">
+        <div class="col-md-3 border-right text-center">
+          Code catégorie
+        </div>
+        <div class="col-md-3 border-right text-center">
+          Déscription catégorie
+        </div>
+      </div>
+      <div class="row col-md-12 custom-border mb-3 p-3">
+        <div class="col-md-3 border-right text-center">
+          Code catégorie
+        </div>
+        <div class="col-md-3 border-right text-center">
+          Déscription catégorie
+        </div>
+      </div>
+      <div class="row col-md-12 custom-border mb-3 p-3">
+        <div class="col-md-3 border-right text-center">
+          Code catégorie
+        </div>
+        <div class="col-md-3 border-right text-center">
+          Déscription catégorie
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3 text-center">
+    <app-pagination></app-pagination>
+  </div>
+</div>

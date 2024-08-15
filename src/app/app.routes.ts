@@ -7,7 +7,6 @@ import {PageArticleComponent} from "./pages/articles/page-article/page-article.c
 import {NouvelArticleComponent} from "./pages/articles/nouvel-article/nouvel-article.component";
 import {PageMouvementStockComponent} from "./pages/mouvement-stock/page-mouvement-stock/page-mouvement-stock.component";
 import {PageClientComponent} from "./pages/client/page-client/page-client.component";
-import {PageFournisseurComponent} from "./pages/fournisseur/page-fournisseur/page-fournisseur.component";
 import {
   NouveauClientFournisseurComponent
 } from "./composants/nouveau-client-fournisseur/nouveau-client-fournisseur.component";
@@ -17,6 +16,9 @@ import {
 import {
   NouvelleCommandeClientFournisseurComponent
 } from "./composants/nouvelle-commande-client-fournisseur/nouvelle-commande-client-fournisseur.component";
+import {PageFournisseurComponent} from "./pages/fournisseur/page-fournisseur/page-fournisseur.component";
+import {PageCategoriesComponent} from "./pages/categories/page-categories/page-categories.component";
+import {NouvelleCategorieComponent} from "./pages/categories/nouvelle-categorie/nouvelle-categorie.component";
 
 export const routes: Routes = [
   {
@@ -78,6 +80,14 @@ export const routes: Routes = [
       {
         path: 'nouvelleCommandeFournisseur',
         component: NouvelleCommandeClientFournisseurComponent
+      },
+      {
+        path: 'Categorie',
+        component: PageCategoriesComponent
+      },
+      {
+        path: 'nouvelleCategorie',
+        component: NouvelleCategorieComponent
       }
     ]
   }

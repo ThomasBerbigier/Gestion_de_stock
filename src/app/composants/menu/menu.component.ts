@@ -140,7 +140,7 @@ export class MenuComponent {
           id: '51',
           titre: 'Catégorie',
           icon: faList,
-          url: ''
+          url: 'Categorie'
         },
         {
           id: '52',
