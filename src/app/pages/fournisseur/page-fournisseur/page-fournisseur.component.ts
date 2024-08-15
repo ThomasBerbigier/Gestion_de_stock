@@ -4,6 +4,7 @@ import {
     DetailClientFournisseurComponent
 } from "../../../composants/detail-client-fournisseur/detail-client-fournisseur.component";
 import {PaginationComponent} from "../../../composants/pagination/pagination.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-page-fournisseur',
@@ -18,4 +19,11 @@ import {PaginationComponent} from "../../../composants/pagination/pagination.com
 })
 export class PageFournisseurComponent {
 
+  constructor(
+    private router: Router
+  ) {}
+
+  nouveauFournisseur(): void {
+    this.router.navigate(['nouveauFournisseur'])
+  }
 }

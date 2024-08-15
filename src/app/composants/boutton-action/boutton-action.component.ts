@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {faChevronRight, faFileExport, faFileImport, faSquarePlus} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
@@ -15,4 +15,11 @@ export class BouttonActionComponent {
   protected readonly faFileExport = faFileExport;
   protected readonly faFileImport = faFileImport;
   protected readonly faSquarePlus = faSquarePlus;
+
+  @Output()
+  clickEvent = new EventEmitter();
+
+  bouttonNouveauClick(): void {
+    this.clickEvent.emit();
+  }
 }

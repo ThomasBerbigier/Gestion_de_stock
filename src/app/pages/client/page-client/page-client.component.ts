@@ -5,6 +5,7 @@ import {PaginationComponent} from "../../../composants/pagination/pagination.com
 import {
   DetailClientFournisseurComponent
 } from "../../../composants/detail-client-fournisseur/detail-client-fournisseur.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-page-client',
@@ -20,4 +21,11 @@ import {
 })
 export class PageClientComponent {
 
+  constructor(
+    private router: Router
+  ) {}
+
+  nouveauClient(): void {
+    this.router.navigate(['nouveauClient'])
+  }
 }
