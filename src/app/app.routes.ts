@@ -21,6 +21,8 @@ import {PageCategoriesComponent} from "./pages/categories/page-categories/page-c
 import {NouvelleCategorieComponent} from "./pages/categories/nouvelle-categorie/nouvelle-categorie.component";
 import {PageUtilisateurComponent} from "./pages/utilisateur/page-utilisateur/page-utilisateur.component";
 import {NouvelUtilisateurComponent} from "./pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component";
+import {PageProfilComponent} from "./pages/profil/page-profil/page-profil.component";
+import {ChangerMotDePasseComponent} from "./pages/profil/changer-mot-de-passe/changer-mot-de-passe.component";
 
 export const routes: Routes = [
   {
@@ -98,6 +100,14 @@ export const routes: Routes = [
       {
         path: 'nouvelUtilisateur',
         component: NouvelUtilisateurComponent
+      },
+      {
+        path: 'profil',
+        component: PageProfilComponent
+      },
+      {
+        path: 'changerMotDePasse',
+        component: ChangerMotDePasseComponent
       }
     ]
   }
