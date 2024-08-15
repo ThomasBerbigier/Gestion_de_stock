@@ -9,6 +9,7 @@ import {
   DetailCommandeClientFournisseurComponent
 } from "../../composants/detail-commande-client-fournisseur/detail-commande-client-fournisseur.component";
 import {DetailCommandeComponent} from "../../composants/detail-commande/detail-commande.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-page-commande-clients-fournisseurs',
@@ -26,4 +27,11 @@ import {DetailCommandeComponent} from "../../composants/detail-commande/detail-c
 })
 export class PageCommandeClientsFournisseursComponent {
 
+  constructor(
+    private router: Router
+  ) {}
+
+  nouvelleCommande(): void {
+    this.router.navigate(['nouvelleCommandeClient']);
+  }
 }

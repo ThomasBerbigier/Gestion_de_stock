@@ -4,7 +4,9 @@
       <h1>Commande clients / fournisseurs</h1>
     </div>
     <div class="col-md-4 text-end">
-      <app-boutton-action></app-boutton-action>
+      <app-boutton-action
+      (clickEvent)="nouvelleCommande()"
+      ></app-boutton-action>
     </div>
   </div>
   <div class="accordion mb-1" id="accordionExample">
