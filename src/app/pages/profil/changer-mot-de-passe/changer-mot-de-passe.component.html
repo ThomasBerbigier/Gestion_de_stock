@@ -1,1 +1,43 @@
-<p>changer-mot-de-passe works!</p>
+<div class="row m-0">
+  <div class="card col-md-6 text-center mt-3">
+    <div class="col">
+      <div class="mb-3">
+        <img src="favicon.ico" class="rounded-circle custom-image" alt="image du profil">
+      </div>
+      <div>
+        <h2>Nom Prenom</h2>
+        <small class="form-text text-muted">Adresse, Ville, Code Postal</small>
+      </div>
+      <div class="row mt-3 mb-3">
+        <div class="col-md-6">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card col-md-6 ps-0 pe-0 mt-3">
+    <form>
+      <div class="mb-3 mt-3">
+        <input type="email" class="form-control" aria-describedby="text" placeholder="Ancien mot de passe">
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" aria-describedby="text" placeholder="Nouveau mot de passe">
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" aria-describedby="text" placeholder="Confirmer mot de passe">
+      </div>
+    </form>
+    <div class="row text-end mt-2 mb-2">
+      <div class="col-md-12 text-center">
+        <button class="btn btn-primary me-3">
+          <fa-icon [icon]="faSquarePlus"></fa-icon>&nbsp;
+          Enregistrer
+        </button>
+        <button class="btn btn-danger me-3">
+          <fa-icon [icon]="faXmark"></fa-icon>&nbsp;
+          Annuler
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
