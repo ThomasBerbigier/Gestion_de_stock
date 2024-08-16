@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Router, RouterOutlet} from "@angular/router";
 import {Menu} from "./menu";
-import {NgForOf} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faChartLine,
@@ -27,7 +27,8 @@ import {
   imports: [
     RouterOutlet,
     NgForOf,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgClass
   ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
@@ -152,11 +153,19 @@ export class MenuComponent {
     }
   ];
 
+  private lastSelectedMenu : Menu | undefined;
+
   constructor(
     private router: Router
   ) {}
 
-  navigate(url?: string | undefined): void {
-    this.router.navigate([url]);
+  navigate(menu: Menu): void {
+    if(this.lastSelectedMenu) {
+      this.lastSelectedMenu.active = false;
+    }
+    menu.active = true;
+    this.lastSelectedMenu = menu;
+    this.router.navigate([menu.url]);
+
   }
 }

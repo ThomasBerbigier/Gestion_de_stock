@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BouttonActionComponent} from "../../composants/boutton-action/boutton-action.component";
 import {
     DetailMouvementStockArticleComponent
@@ -9,7 +9,7 @@ import {
   DetailCommandeClientFournisseurComponent
 } from "../../composants/detail-commande-client-fournisseur/detail-commande-client-fournisseur.component";
 import {DetailCommandeComponent} from "../../composants/detail-commande/detail-commande.component";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-page-commande-clients-fournisseurs',
@@ -25,13 +25,26 @@ import {Router} from "@angular/router";
   templateUrl: './page-commande-clients-fournisseurs.component.html',
   styleUrl: './page-commande-clients-fournisseurs.component.scss'
 })
-export class PageCommandeClientsFournisseursComponent {
+export class PageCommandeClientsFournisseursComponent implements OnInit {
+
+  origin = '';
 
   constructor(
-    private router: Router
+    private router: Router,
+    private activatedRoute : ActivatedRoute
   ) {}
 
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe(data => {
+      this.origin = data['origin'];
+    });
+  }
+
   nouvelleCommande(): void {
-    this.router.navigate(['nouvelleCommandeClient']);
+    if(this.origin === 'clients') {
+      this.router.navigate(['nouvelleCommandeClient']);
+    } else if (this.origin === 'fournisseurs') {
+      this.router.navigate(['nouvelleCommandeFournisseur']);
+    }
   }
 }

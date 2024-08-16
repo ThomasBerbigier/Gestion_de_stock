@@ -59,15 +59,24 @@ export const routes: Routes = [
       },
       {
         path: 'nouveauClient',
-        component: NouveauClientFournisseurComponent
+        component: NouveauClientFournisseurComponent,
+        data: {
+          origin: 'client'
+        }
       },
       {
         path: 'commandesClients',
-        component: PageCommandeClientsFournisseursComponent
+        component: PageCommandeClientsFournisseursComponent,
+        data: {
+          origin: 'clients'
+        }
       },
       {
         path: 'nouvelleCommandeClient',
-        component: NouvelleCommandeClientFournisseurComponent
+        component: NouvelleCommandeClientFournisseurComponent,
+        data: {
+          origin: 'client'
+        }
       },
       {
         path: 'fournisseurs',
@@ -75,15 +84,24 @@ export const routes: Routes = [
       },
       {
         path: 'nouveauFournisseur',
-        component: NouveauClientFournisseurComponent
+        component: NouveauClientFournisseurComponent,
+        data: {
+          origin: 'fournisseur'
+        }
       },
       {
         path: 'commandesFournisseurs',
-        component: PageCommandeClientsFournisseursComponent
+        component: PageCommandeClientsFournisseursComponent,
+        data: {
+          origin: 'fournisseurs'
+        }
       },
       {
         path: 'nouvelleCommandeFournisseur',
-        component: NouvelleCommandeClientFournisseurComponent
+        component: NouvelleCommandeClientFournisseurComponent,
+        data: {
+          origin: 'fournisseur'
+        }
       },
       {
         path: 'Categorie',

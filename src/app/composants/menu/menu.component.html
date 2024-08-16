@@ -10,8 +10,10 @@
       <div class="accordion-body">
         <!-- Contenu du sous-menu -->
         <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let sousMenu of menu.sousMenu">
-            <a href="Javascript:void(0);" (click)="navigate(sousMenu.url)">
+          <li class="list-group-item"
+              *ngFor="let sousMenu of menu.sousMenu"
+              [ngClass]="{'bg-primary': sousMenu.active, '': !sousMenu.active}">
+            <a href="Javascript:void(0);" (click)="navigate(sousMenu)">
               <fa-icon [icon]="sousMenu.icon"></fa-icon>&nbsp;
               {{sousMenu.titre}}</a>
           </li>
