@@ -23,6 +23,7 @@ import {PageUtilisateurComponent} from "./pages/utilisateur/page-utilisateur/pag
 import {NouvelUtilisateurComponent} from "./pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component";
 import {PageProfilComponent} from "./pages/profil/page-profil/page-profil.component";
 import {ChangerMotDePasseComponent} from "./pages/profil/changer-mot-de-passe/changer-mot-de-passe.component";
+import {ApplicationGuard} from "./services/guard/application-guard.service";
 
 export const routes: Routes = [
   {
@@ -39,15 +40,18 @@ export const routes: Routes = [
     children: [
       {
         path: 'Statistiques',
-        component: PageStatistiquesComponent
+        component: PageStatistiquesComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'Articles',
-        component: PageArticleComponent
+        component: PageArticleComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'NouvelArticle',
-        component: NouvelArticleComponent
+        component: NouvelArticleComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'mouvement-stock',
@@ -55,11 +59,13 @@ export const routes: Routes = [
       },
       {
         path: 'clients',
-        component: PageClientComponent
+        component: PageClientComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'nouveauClient',
         component: NouveauClientFournisseurComponent,
+      canActivate: [ApplicationGuard],
         data: {
           origin: 'client'
         }
@@ -67,6 +73,7 @@ export const routes: Routes = [
       {
         path: 'commandesClients',
         component: PageCommandeClientsFournisseursComponent,
+        canActivate: [ApplicationGuard],
         data: {
           origin: 'clients'
         }
@@ -80,11 +87,13 @@ export const routes: Routes = [
       },
       {
         path: 'fournisseurs',
-        component: PageFournisseurComponent
+        component: PageFournisseurComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'nouveauFournisseur',
         component: NouveauClientFournisseurComponent,
+        canActivate: [ApplicationGuard],
         data: {
           origin: 'fournisseur'
         }
@@ -92,6 +101,7 @@ export const routes: Routes = [
       {
         path: 'commandesFournisseurs',
         component: PageCommandeClientsFournisseursComponent,
+        canActivate: [ApplicationGuard],
         data: {
           origin: 'fournisseurs'
         }
@@ -99,33 +109,40 @@ export const routes: Routes = [
       {
         path: 'nouvelleCommandeFournisseur',
         component: NouvelleCommandeClientFournisseurComponent,
+        canActivate: [ApplicationGuard],
         data: {
           origin: 'fournisseur'
         }
       },
       {
         path: 'Categorie',
-        component: PageCategoriesComponent
+        component: PageCategoriesComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'nouvelleCategorie',
-        component: NouvelleCategorieComponent
+        component: NouvelleCategorieComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'utilisateurs',
-        component: PageUtilisateurComponent
+        component: PageUtilisateurComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'nouvelUtilisateur',
-        component: NouvelUtilisateurComponent
+        component: NouvelUtilisateurComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'profil',
-        component: PageProfilComponent
+        component: PageProfilComponent,
+        canActivate: [ApplicationGuard]
       },
       {
         path: 'changerMotDePasse',
-        component: ChangerMotDePasseComponent
+        component: ChangerMotDePasseComponent,
+        canActivate: [ApplicationGuard]
       }
     ]
   }
