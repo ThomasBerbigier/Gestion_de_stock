@@ -1,0 +1,2245 @@
+openapi: 3.0.1
+info:
+  title: Gestion de Stock API
+  version: v1
+servers:
+- description: Generated server url
+  url: http://localhost:8081
+security:
+- bearerAuth: []
+tags:
+- description: API pour la gestion des articles
+  name: articles
+- description: API pour la gestion des fournisseurs
+  name: fournisseurs
+- description: API pour la gestion des ventes
+  name: ventes
+- description: API pour la gestion des utilisateurs
+  name: utilisateurs
+- description: API pour la gestion des commandes clients
+  name: commandesclients
+- description: API pour la gestion des entreprises
+  name: entreprises
+- description: API pour la gestion des photos
+  name: Photos
+- description: API pour la gestion des clients
+  name: clients
+- description: API pour la gestion des catégories
+  name: categories
+- description: API pour la gestion des commandes fournisseurs
+  name: commandesfournisseurs
+- description: API pour la gestion des mouvements de stock
+  name: MouvementDeStock
+paths:
+  /gestiondestock/v1/ventes/create:
+    post:
+      operationId: save
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VentesDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VentesDto'
+          description: OK
+      tags:
+      - ventes
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/utilisateurs/create:
+    post:
+      operationId: save_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UtilisateurDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UtilisateurDto'
+          description: OK
+      tags:
+      - utilisateurs
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/save/{id}/{titre}/{context}:
+    post:
+      operationId: savePhoto
+      parameters:
+      - explode: false
+        in: path
+        name: context
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: titre
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/savePhoto_request'
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: object
+          description: OK
+      tags:
+      - Photos
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/mvtstk/sortie:
+    post:
+      operationId: sortieStock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MouvementDeStockDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MouvementDeStockDto'
+          description: OK
+      tags:
+      - MouvementDeStock
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/mvtstk/entree:
+    post:
+      operationId: entreeStock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MouvementDeStockDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MouvementDeStockDto'
+          description: OK
+      tags:
+      - MouvementDeStock
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/mvtstk/correctionpos:
+    post:
+      operationId: correctionStockPos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MouvementDeStockDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MouvementDeStockDto'
+          description: OK
+      tags:
+      - MouvementDeStock
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/mvtstk/correctionneg:
+    post:
+      operationId: correctionStockNeg
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MouvementDeStockDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MouvementDeStockDto'
+          description: OK
+      tags:
+      - MouvementDeStock
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/fournisseurs/create:
+    post:
+      operationId: save_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FournisseurDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FournisseurDto'
+          description: OK
+      tags:
+      - fournisseurs
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/entreprises/create:
+    post:
+      operationId: save_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntrepriseDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EntrepriseDto'
+          description: OK
+      tags:
+      - entreprises
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesfournisseurs/create:
+    post:
+      operationId: save_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommandeFournisseurDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeFournisseurDto'
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/create:
+    post:
+      operationId: save_5
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommandeClientDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeClientDto'
+          description: OK
+      tags:
+      - commandesclients
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/clients/create:
+    post:
+      operationId: save_6
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientDto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientDto'
+          description: OK
+      tags:
+      - clients
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/categories/create:
+    post:
+      description: Cette méthode permet d'enregistrer ou de modifier une catégorie
+      operationId: save_7
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategorieDto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategorieDto'
+          description: L'objet catégorie créé ou modifié
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategorieDto'
+          description: L'objet catégorie n'est pas valide
+      summary: Enregistrer une catégorie
+      tags:
+      - categories
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/auth/authenticate:
+    post:
+      operationId: authenticate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthenticationResponse'
+          description: OK
+      tags:
+      - authentication
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/articles/create:
+    post:
+      description: Cette méthode permet d'enregistrer ou de modifier un article
+      operationId: save_8
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArticleDto'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleDto'
+          description: L'objet article n'est pas valide
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleDto'
+          description: L'objet article créé ou modifié
+      summary: Enregistrer un article
+      tags:
+      - articles
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/commandesfournisseurs/update/quantite/{idCommande}/{idLigneCommande}/{quantite}:
+    patch:
+      operationId: updateQuantiteCommande
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idLigneCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: quantite
+        required: true
+        schema:
+          type: number
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeFournisseurDto'
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesfournisseurs/update/fournisseur/{idCommande}/{idFournisseur}:
+    patch:
+      operationId: updateFournisseur
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idFournisseur
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeFournisseurDto'
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesfournisseurs/update/etat/{idCommande}/{etatCommande}:
+    patch:
+      operationId: updateEtatCommande
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: etatCommande
+        required: true
+        schema:
+          enum:
+          - EN_PREPARATION
+          - VALIDEE
+          - LIVREE
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeFournisseurDto'
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesfournisseurs/update/article/{idCommande}/{idLigneCommande}/{idArticle}:
+    patch:
+      operationId: updateArticle
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idLigneCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idArticle
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeFournisseurDto'
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/update/quantite/{idCommande}/{idLigneCommande}/{quantite}:
+    patch:
+      operationId: updateQuantiteCommande_1
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idLigneCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: quantite
+        required: true
+        schema:
+          type: number
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeClientDto'
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/update/etat/{idCommande}/{etatCommande}:
+    patch:
+      operationId: updateEtatCommande_1
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: etatCommande
+        required: true
+        schema:
+          enum:
+          - EN_PREPARATION
+          - VALIDEE
+          - LIVREE
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeClientDto'
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/update/client/{idCommande}/{idClient}:
+    patch:
+      operationId: updateClient
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idClient
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeClientDto'
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/update/article/{idCommande}/{idLigneCommande}/{idArticle}:
+    patch:
+      operationId: updateArticle_1
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idLigneCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idArticle
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeClientDto'
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/ventes/{idVentes}:
+    get:
+      operationId: findById
+      parameters:
+      - explode: false
+        in: path
+        name: idVentes
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VentesDto'
+          description: OK
+      tags:
+      - ventes
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/ventes/{codeVentes}:
+    get:
+      operationId: findByCode
+      parameters:
+      - explode: false
+        in: path
+        name: codeVentes
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VentesDto'
+          description: OK
+      tags:
+      - ventes
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/ventes/all:
+    get:
+      operationId: findAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/VentesDto'
+                type: array
+          description: OK
+      tags:
+      - ventes
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/utilisateurs/{idUtilisateur}:
+    get:
+      operationId: findById_1
+      parameters:
+      - explode: false
+        in: path
+        name: idUtilisateur
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UtilisateurDto'
+          description: OK
+      tags:
+      - utilisateurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/utilisateurs/find/{email}:
+    get:
+      operationId: findByEmail
+      parameters:
+      - explode: false
+        in: path
+        name: email
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UtilisateurDto'
+          description: OK
+      tags:
+      - utilisateurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/utilisateurs/all:
+    get:
+      operationId: findAll_1
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/UtilisateurDto'
+                type: array
+          description: OK
+      tags:
+      - utilisateurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/mvtstk/stockreel/{idArticle}:
+    get:
+      operationId: stockReelArticle
+      parameters:
+      - explode: false
+        in: path
+        name: idArticle
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: number
+          description: OK
+      tags:
+      - MouvementDeStock
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/mvtstk/filter/article/{idArticle}:
+    get:
+      operationId: mvtStkArticle
+      parameters:
+      - explode: false
+        in: path
+        name: idArticle
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/MouvementDeStockDto'
+                type: array
+          description: OK
+      tags:
+      - MouvementDeStock
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/fournisseurs/{idFournisseur}:
+    get:
+      operationId: findById_2
+      parameters:
+      - explode: false
+        in: path
+        name: idFournisseur
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FournisseurDto'
+          description: OK
+      tags:
+      - fournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/fournisseurs/all:
+    get:
+      operationId: findAll_2
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/FournisseurDto'
+                type: array
+          description: OK
+      tags:
+      - fournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/entreprises/{idEntreprise}:
+    get:
+      operationId: findById_3
+      parameters:
+      - explode: false
+        in: path
+        name: idEntreprise
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EntrepriseDto'
+          description: OK
+      tags:
+      - entreprises
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/entreprises/all:
+    get:
+      operationId: findAll_3
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/EntrepriseDto'
+                type: array
+          description: OK
+      tags:
+      - entreprises
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesfournisseurs/{idCommandeFournisseur}:
+    get:
+      operationId: findById_4
+      parameters:
+      - explode: false
+        in: path
+        name: idCommandeFournisseur
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeFournisseurDto'
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesfournisseurs/{codeCommandeFournisseur}:
+    get:
+      operationId: findByCode_1
+      parameters:
+      - explode: false
+        in: path
+        name: codeCommandeFournisseur
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeFournisseurDto'
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesfournisseurs/lignesCommande/{idCommande}:
+    get:
+      operationId: findAllLignesCommandesFournisseurByCommandeFournisseurId
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/LigneCommandeFournisseurDto'
+                type: array
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesfournisseurs/all:
+    get:
+      operationId: findAll_4
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommandeFournisseurDto'
+                type: array
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/{idCommandeClient}:
+    get:
+      operationId: findById_5
+      parameters:
+      - explode: false
+        in: path
+        name: idCommandeClient
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeClientDto'
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/{codeCommandeClient}:
+    get:
+      operationId: findByCode_2
+      parameters:
+      - explode: false
+        in: path
+        name: codeCommandeClient
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeClientDto'
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/lignesCommande/{idCommande}:
+    get:
+      operationId: findAllLigneCommandesByCommandeClientId
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/LigneCommandeClientDto'
+                type: array
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/all:
+    get:
+      operationId: findAll_5
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommandeClientDto'
+                type: array
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/clients/{idClient}:
+    get:
+      operationId: findById_6
+      parameters:
+      - explode: false
+        in: path
+        name: idClient
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientDto'
+          description: OK
+      tags:
+      - clients
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/clients/all:
+    get:
+      operationId: findAll_6
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ClientDto'
+                type: array
+          description: OK
+      tags:
+      - clients
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/categories/{idCategorie}:
+    get:
+      description: ' Cette méthode permet de rechercher une catégorie par son ID'
+      operationId: findById_7
+      parameters:
+      - explode: false
+        in: path
+        name: idCategorie
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategorieDto'
+          description: Une catégorie a été trouvé dans la BDD
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategorieDto'
+          description: Aucune catégorie n'existe dans la BDD avec l'ID fourni
+      summary: Rechercher une catégorie par ID
+      tags:
+      - categories
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/categories/{codeCategorie}:
+    get:
+      description: ' Cette méthode permet de rechercher une catégorie par son CODE'
+      operationId: findByCode_3
+      parameters:
+      - explode: false
+        in: path
+        name: codeCategorie
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategorieDto'
+          description: Aucune catégorie n'existe dans la BDD avec le CODE fourni
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategorieDto'
+          description: La catégorie a été trouvé dans la BDD
+      summary: Rechercher une catégorie par CODE
+      tags:
+      - categories
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/categories/all:
+    get:
+      description: ' Cette méthode permet de rechercher et renvoyer la liste des catégories
+        existantes dans la BDD'
+      operationId: findAll_7
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CategorieDto'
+                type: array
+          description: Liste vide
+      summary: Renvoi la liste des catégories
+      tags:
+      - categories
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/articles/{idArticle}:
+    get:
+      description: ' Cette méthode permet de rechercher un article par son ID'
+      operationId: findById_8
+      parameters:
+      - explode: false
+        in: path
+        name: idArticle
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleDto'
+          description: L'article a été trouvé dans la BDD
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleDto'
+          description: Aucun article n'existe dans la BDD avec l'ID fourni
+      summary: Rechercher un article par ID
+      tags:
+      - articles
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/articles/historique/vente/{idArticle}:
+    get:
+      operationId: findHistoriqueVentes
+      parameters:
+      - explode: false
+        in: path
+        name: idArticle
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/LigneVenteDto'
+                type: array
+          description: OK
+      tags:
+      - articles
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/articles/historique/vente/commandefournisseur/{idArticle}:
+    get:
+      operationId: findHistoriqueCommandeFournisseur
+      parameters:
+      - explode: false
+        in: path
+        name: idArticle
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/LigneCommandeFournisseurDto'
+                type: array
+          description: OK
+      tags:
+      - articles
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/articles/historique/commandeclient/{idArticle}:
+    get:
+      operationId: findHistoriqueCommandeClient
+      parameters:
+      - explode: false
+        in: path
+        name: idArticle
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/LigneCommandeClientDto'
+                type: array
+          description: OK
+      tags:
+      - articles
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/articles/filter/{codeArticle}:
+    get:
+      description: ' Cette méthode permet de rechercher un article par son CODE'
+      operationId: findByCodeArticle
+      parameters:
+      - explode: false
+        in: path
+        name: codeArticle
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleDto'
+          description: Aucun article n'existe dans la BDD avec le CODE fourni
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleDto'
+          description: L'article a été trouvé dans la BDD
+      summary: Rechercher un article par CODE
+      tags:
+      - articles
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/articles/filter/categorie/{idCategorie}:
+    get:
+      operationId: findAllArticleByIdCategorie
+      parameters:
+      - explode: false
+        in: path
+        name: idCategorie
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArticleDto'
+                type: array
+          description: OK
+      tags:
+      - articles
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/articles/all:
+    get:
+      description: ' Cette méthode permet de rechercher et renvoyer la liste des articles
+        existants dans la BDD'
+      operationId: findAll_8
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArticleDto'
+                type: array
+          description: Liste vide
+      summary: Renvoi la liste des articles
+      tags:
+      - articles
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/ventes/delete/{idVentes}:
+    delete:
+      operationId: delete
+      parameters:
+      - explode: false
+        in: path
+        name: idVentes
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      tags:
+      - ventes
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/utilisateurs/delete/{idUtilisateur}:
+    delete:
+      operationId: delete_1
+      parameters:
+      - explode: false
+        in: path
+        name: idUtilisateur
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      tags:
+      - utilisateurs
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/fournisseurs/delete/{idFournisseur}:
+    delete:
+      operationId: delete_2
+      parameters:
+      - explode: false
+        in: path
+        name: idFournisseur
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      tags:
+      - fournisseurs
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/entreprises/delete/{idEntreprise}:
+    delete:
+      operationId: delete_3
+      parameters:
+      - explode: false
+        in: path
+        name: idEntreprise
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      tags:
+      - entreprises
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/commandesfournisseurs/delete/{idCommandeFournisseur}:
+    delete:
+      operationId: delete_4
+      parameters:
+      - explode: false
+        in: path
+        name: idCommandeFournisseur
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/commandesfournisseurs/delete/article/{idCommande}/{idLigneCommande}:
+    delete:
+      operationId: deleteArticle
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idLigneCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeFournisseurDto'
+          description: OK
+      tags:
+      - commandesfournisseurs
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/commandesclients/delete/{idCommandeClient}:
+    delete:
+      operationId: delete_5
+      parameters:
+      - explode: false
+        in: path
+        name: idCommandeClient
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/commandesclients/delete/article/{idCommande}/{idLigneCommande}:
+    delete:
+      operationId: deleteArticle_1
+      parameters:
+      - explode: false
+        in: path
+        name: idCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: idLigneCommande
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CommandeClientDto'
+          description: OK
+      tags:
+      - commandesclients
+      x-accepts:
+      - '*/*'
+  /gestiondestock/v1/clients/delete/{idClient}:
+    delete:
+      operationId: deleteById
+      parameters:
+      - explode: false
+        in: path
+        name: idClient
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      tags:
+      - clients
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/categories/delete/{idCategorie}:
+    delete:
+      description: ' Cette méthode permet de supprimer une catégorie par ID'
+      operationId: delete_6
+      parameters:
+      - explode: false
+        in: path
+        name: idCategorie
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: La catégorie a été supprimée
+      summary: Supprimer une catégorie
+      tags:
+      - categories
+      x-accepts:
+      - application/json
+  /gestiondestock/v1/articles/delete/{idArticle}:
+    delete:
+      description: ' Cette méthode permet de supprimer un article par ID'
+      operationId: delete_7
+      parameters:
+      - explode: false
+        in: path
+        name: idArticle
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: L'article a été supprimé
+      summary: Supprimer un article
+      tags:
+      - articles
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    ArticleDto:
+      example:
+        prixUnitaireHt: 2.3021358869347655
+        categorie:
+          code: code
+          id: 3
+          designation: designation
+          idEntreprise: 2
+        codeArticle: codeArticle
+        photo: photo
+        id: 5
+        designation: designation
+        idEntreprise: 4
+        tauxTva: 7.061401241503109
+        prixUnitaireTtc: 9.301444243932576
+      properties:
+        id:
+          format: int32
+          type: integer
+        codeArticle:
+          type: string
+        designation:
+          type: string
+        prixUnitaireHt:
+          type: number
+        tauxTva:
+          type: number
+        prixUnitaireTtc:
+          type: number
+        photo:
+          type: string
+        categorie:
+          $ref: '#/components/schemas/CategorieDto'
+        idEntreprise:
+          format: int32
+          type: integer
+      type: object
+    CategorieDto:
+      example:
+        code: code
+        id: 3
+        designation: designation
+        idEntreprise: 2
+      properties:
+        id:
+          format: int32
+          type: integer
+        code:
+          type: string
+        designation:
+          type: string
+        idEntreprise:
+          format: int32
+          type: integer
+      type: object
+    LigneVenteDto:
+      example:
+        prixUnitaire: 5.962133916683182
+        id: 6
+        idEntreprise: 7
+        vente: null
+        article:
+          prixUnitaireHt: 2.3021358869347655
+          categorie:
+            code: code
+            id: 3
+            designation: designation
+            idEntreprise: 2
+          codeArticle: codeArticle
+          photo: photo
+          id: 5
+          designation: designation
+          idEntreprise: 4
+          tauxTva: 7.061401241503109
+          prixUnitaireTtc: 9.301444243932576
+        quantite: 1.4658129805029452
+      properties:
+        id:
+          format: int32
+          type: integer
+        quantite:
+          type: number
+        prixUnitaire:
+          type: number
+        vente:
+          $ref: '#/components/schemas/VentesDto'
+        article:
+          $ref: '#/components/schemas/ArticleDto'
+        idEntreprise:
+          format: int32
+          type: integer
+      type: object
+    VentesDto:
+      example:
+        code: code
+        dateVente: 2000-01-23T04:56:07.000+00:00
+        ligneVentes:
+        - prixUnitaire: 5.962133916683182
+          id: 6
+          idEntreprise: 7
+          vente: null
+          article:
+            prixUnitaireHt: 2.3021358869347655
+            categorie:
+              code: code
+              id: 3
+              designation: designation
+              idEntreprise: 2
+            codeArticle: codeArticle
+            photo: photo
+            id: 5
+            designation: designation
+            idEntreprise: 4
+            tauxTva: 7.061401241503109
+            prixUnitaireTtc: 9.301444243932576
+          quantite: 1.4658129805029452
+        - prixUnitaire: 5.962133916683182
+          id: 6
+          idEntreprise: 7
+          vente: null
+          article:
+            prixUnitaireHt: 2.3021358869347655
+            categorie:
+              code: code
+              id: 3
+              designation: designation
+              idEntreprise: 2
+            codeArticle: codeArticle
+            photo: photo
+            id: 5
+            designation: designation
+            idEntreprise: 4
+            tauxTva: 7.061401241503109
+            prixUnitaireTtc: 9.301444243932576
+          quantite: 1.4658129805029452
+        id: 0
+        idEntreprise: 1
+        commentaire: commentaire
+      properties:
+        id:
+          format: int32
+          type: integer
+        code:
+          type: string
+        dateVente:
+          format: date-time
+          type: string
+        commentaire:
+          type: string
+        ligneVentes:
+          items:
+            $ref: '#/components/schemas/LigneVenteDto'
+          type: array
+        idEntreprise:
+          format: int32
+          type: integer
+      type: object
+    AdresseDto:
+      example:
+        ville: ville
+        codePostal: codePostal
+        adresse1: adresse1
+        adresse2: adresse2
+        pays: pays
+      properties:
+        adresse1:
+          type: string
+        adresse2:
+          type: string
+        ville:
+          type: string
+        codePostal:
+          type: string
+        pays:
+          type: string
+      type: object
+    EntrepriseDto:
+      example:
+        codeFiscal: codeFiscal
+        siteweb: siteweb
+        adresse:
+          ville: ville
+          codePostal: codePostal
+          adresse1: adresse1
+          adresse2: adresse2
+          pays: pays
+        description: description
+        photo: photo
+        id: 6
+        nom: nom
+        numTel: numTel
+        email: email
+      properties:
+        id:
+          format: int32
+          type: integer
+        nom:
+          type: string
+        description:
+          type: string
+        adresse:
+          $ref: '#/components/schemas/AdresseDto'
+        codeFiscal:
+          type: string
+        photo:
+          type: string
+        email:
+          type: string
+        numTel:
+          type: string
+        siteweb:
+          type: string
+      type: object
+    RolesDto:
+      example:
+        roleName: roleName
+        id: 1
+      properties:
+        id:
+          format: int32
+          type: integer
+        roleName:
+          type: string
+      type: object
+    UtilisateurDto:
+      example:
+        dateDeNaissance: 2000-01-23T04:56:07.000+00:00
+        motDePasse: motDePasse
+        entreprise:
+          codeFiscal: codeFiscal
+          siteweb: siteweb
+          adresse:
+            ville: ville
+            codePostal: codePostal
+            adresse1: adresse1
+            adresse2: adresse2
+            pays: pays
+          description: description
+          photo: photo
+          id: 6
+          nom: nom
+          numTel: numTel
+          email: email
+        roles:
+        - roleName: roleName
+          id: 1
+        - roleName: roleName
+          id: 1
+        adresse:
+          ville: ville
+          codePostal: codePostal
+          adresse1: adresse1
+          adresse2: adresse2
+          pays: pays
+        photo: photo
+        id: 0
+        nom: nom
+        prenom: prenom
+        email: email
+      properties:
+        id:
+          format: int32
+          type: integer
+        nom:
+          type: string
+        prenom:
+          type: string
+        email:
+          type: string
+        dateDeNaissance:
+          format: date-time
+          type: string
+        motDePasse:
+          type: string
+        adresse:
+          $ref: '#/components/schemas/AdresseDto'
+        photo:
+          type: string
+        entreprise:
+          $ref: '#/components/schemas/EntrepriseDto'
+        roles:
+          items:
+            $ref: '#/components/schemas/RolesDto'
+          type: array
+      type: object
+    MouvementDeStockDto:
+      example:
+        dateMouvement: 2000-01-23T04:56:07.000+00:00
+        sourceMouvementDeStock: COMMANDE_CLIENT
+        id: 0
+        idEntreprise: 1
+        typeMouvementDeStock: ENTREE
+        article:
+          prixUnitaireHt: 2.3021358869347655
+          categorie:
+            code: code
+            id: 3
+            designation: designation
+            idEntreprise: 2
+          codeArticle: codeArticle
+          photo: photo
+          id: 5
+          designation: designation
+          idEntreprise: 4
+          tauxTva: 7.061401241503109
+          prixUnitaireTtc: 9.301444243932576
+        quantite: 6.027456183070403
+      properties:
+        id:
+          format: int32
+          type: integer
+        dateMouvement:
+          format: date-time
+          type: string
+        quantite:
+          type: number
+        typeMouvementDeStock:
+          enum:
+          - ENTREE
+          - SORTIE
+          - CORRECTION_POS
+          - CORRECTION_NEG
+          type: string
+        article:
+          $ref: '#/components/schemas/ArticleDto'
+        sourceMouvementDeStock:
+          enum:
+          - COMMANDE_CLIENT
+          - COMMANDE_FOURNISSEUR
+          - VENTE
+          type: string
+        idEntreprise:
+          format: int32
+          type: integer
+      type: object
+    FournisseurDto:
+      example:
+        mail: mail
+        adresse:
+          ville: ville
+          codePostal: codePostal
+          adresse1: adresse1
+          adresse2: adresse2
+          pays: pays
+        photo: photo
+        id: 0
+        idEntreprise: 6
+        nom: nom
+        prenom: prenom
+        numTel: numTel
+      properties:
+        id:
+          format: int32
+          type: integer
+        nom:
+          type: string
+        prenom:
+          type: string
+        adresse:
+          $ref: '#/components/schemas/AdresseDto'
+        photo:
+          type: string
+        mail:
+          type: string
+        numTel:
+          type: string
+        idEntreprise:
+          format: int32
+          type: integer
+      type: object
+    CommandeFournisseurDto:
+      example:
+        etatCommande: EN_PREPARATION
+        code: code
+        fournisseur:
+          mail: mail
+          adresse:
+            ville: ville
+            codePostal: codePostal
+            adresse1: adresse1
+            adresse2: adresse2
+            pays: pays
+          photo: photo
+          id: 0
+          idEntreprise: 6
+          nom: nom
+          prenom: prenom
+          numTel: numTel
+        id: 0
+        dateCommande: 2000-01-23T04:56:07.000+00:00
+        idEntreprise: 6
+        commandeLivree: true
+      properties:
+        id:
+          format: int32
+          type: integer
+        code:
+          type: string
+        dateCommande:
+          format: date-time
+          type: string
+        etatCommande:
+          enum:
+          - EN_PREPARATION
+          - VALIDEE
+          - LIVREE
+          type: string
+        idEntreprise:
+          format: int32
+          type: integer
+        fournisseur:
+          $ref: '#/components/schemas/FournisseurDto'
+        commandeLivree:
+          type: boolean
+      type: object
+    ClientDto:
+      example:
+        mail: mail
+        adresse:
+          ville: ville
+          codePostal: codePostal
+          adresse1: adresse1
+          adresse2: adresse2
+          pays: pays
+        photo: photo
+        id: 1
+        idEntreprise: 5
+        nom: nom
+        prenom: prenom
+        numTel: numTel
+      properties:
+        id:
+          format: int32
+          type: integer
+        nom:
+          type: string
+        prenom:
+          type: string
+        adresse:
+          $ref: '#/components/schemas/AdresseDto'
+        photo:
+          type: string
+        mail:
+          type: string
+        numTel:
+          type: string
+        idEntreprise:
+          format: int32
+          type: integer
+      type: object
+    CommandeClientDto:
+      example:
+        etatCommande: EN_PREPARATION
+        code: code
+        client:
+          mail: mail
+          adresse:
+            ville: ville
+            codePostal: codePostal
+            adresse1: adresse1
+            adresse2: adresse2
+            pays: pays
+          photo: photo
+          id: 1
+          idEntreprise: 5
+          nom: nom
+          prenom: prenom
+          numTel: numTel
+        id: 0
+        dateCommande: 2000-01-23T04:56:07.000+00:00
+        idEntreprise: 6
+        commandeLivree: true
+      properties:
+        id:
+          format: int32
+          type: integer
+        code:
+          type: string
+        dateCommande:
+          format: date-time
+          type: string
+        etatCommande:
+          enum:
+          - EN_PREPARATION
+          - VALIDEE
+          - LIVREE
+          type: string
+        idEntreprise:
+          format: int32
+          type: integer
+        client:
+          $ref: '#/components/schemas/ClientDto'
+        commandeLivree:
+          type: boolean
+      type: object
+    AuthenticationRequest:
+      example:
+        password: password
+        login: login
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+      type: object
+    AuthenticationResponse:
+      example:
+        accessToken: accessToken
+      properties:
+        accessToken:
+          type: string
+      type: object
+    LigneCommandeFournisseurDto:
+      example:
+        prixUnitaire: 1.4658129805029452
+        id: 0
+        idEntreprise: 5
+        commandeFournisseur:
+          etatCommande: EN_PREPARATION
+          code: code
+          fournisseur:
+            mail: mail
+            adresse:
+              ville: ville
+              codePostal: codePostal
+              adresse1: adresse1
+              adresse2: adresse2
+              pays: pays
+            photo: photo
+            id: 0
+            idEntreprise: 6
+            nom: nom
+            prenom: prenom
+            numTel: numTel
+          id: 0
+          dateCommande: 2000-01-23T04:56:07.000+00:00
+          idEntreprise: 6
+          commandeLivree: true
+        article:
+          prixUnitaireHt: 2.3021358869347655
+          categorie:
+            code: code
+            id: 3
+            designation: designation
+            idEntreprise: 2
+          codeArticle: codeArticle
+          photo: photo
+          id: 5
+          designation: designation
+          idEntreprise: 4
+          tauxTva: 7.061401241503109
+          prixUnitaireTtc: 9.301444243932576
+        quantite: 6.027456183070403
+      properties:
+        id:
+          format: int32
+          type: integer
+        quantite:
+          type: number
+        prixUnitaire:
+          type: number
+        article:
+          $ref: '#/components/schemas/ArticleDto'
+        commandeFournisseur:
+          $ref: '#/components/schemas/CommandeFournisseurDto'
+        idEntreprise:
+          format: int32
+          type: integer
+      type: object
+    LigneCommandeClientDto:
+      example:
+        prixUnitaire: 1.4658129805029452
+        id: 0
+        idEntreprise: 5
+        article:
+          prixUnitaireHt: 2.3021358869347655
+          categorie:
+            code: code
+            id: 3
+            designation: designation
+            idEntreprise: 2
+          codeArticle: codeArticle
+          photo: photo
+          id: 5
+          designation: designation
+          idEntreprise: 4
+          tauxTva: 7.061401241503109
+          prixUnitaireTtc: 9.301444243932576
+        quantite: 6.027456183070403
+      properties:
+        id:
+          format: int32
+          type: integer
+        quantite:
+          type: number
+        prixUnitaire:
+          type: number
+        article:
+          $ref: '#/components/schemas/ArticleDto'
+        idEntreprise:
+          format: int32
+          type: integer
+      type: object
+    savePhoto_request:
+      properties:
+        file:
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+
