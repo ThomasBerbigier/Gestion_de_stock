@@ -23,7 +23,7 @@ import {PageUtilisateurComponent} from "./pages/utilisateur/page-utilisateur/pag
 import {NouvelUtilisateurComponent} from "./pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component";
 import {PageProfilComponent} from "./pages/profil/page-profil/page-profil.component";
 import {ChangerMotDePasseComponent} from "./pages/profil/changer-mot-de-passe/changer-mot-de-passe.component";
-import {ApplicationGuard} from "./services/guard/application-guard.service";
+import {applicationGuard} from "./services/guard/application-guard.service";
 
 export const routes: Routes = [
   {
@@ -37,35 +37,37 @@ export const routes: Routes = [
   {
     path: '',
     component: PageDashboardComponent,
+    canActivate: [applicationGuard],
     children: [
       {
         path: 'Statistiques',
         component: PageStatistiquesComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'Articles',
         component: PageArticleComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'NouvelArticle',
         component: NouvelArticleComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'mouvement-stock',
-        component: PageMouvementStockComponent
+        component: PageMouvementStockComponent,
+        canActivate: [applicationGuard]
       },
       {
         path: 'clients',
         component: PageClientComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'nouveauClient',
         component: NouveauClientFournisseurComponent,
-      canActivate: [ApplicationGuard],
+      canActivate: [applicationGuard],
         data: {
           origin: 'client'
         }
@@ -73,7 +75,7 @@ export const routes: Routes = [
       {
         path: 'commandesClients',
         component: PageCommandeClientsFournisseursComponent,
-        canActivate: [ApplicationGuard],
+        canActivate: [applicationGuard],
         data: {
           origin: 'clients'
         }
@@ -81,6 +83,7 @@ export const routes: Routes = [
       {
         path: 'nouvelleCommandeClient',
         component: NouvelleCommandeClientFournisseurComponent,
+        canActivate: [applicationGuard],
         data: {
           origin: 'client'
         }
@@ -88,12 +91,12 @@ export const routes: Routes = [
       {
         path: 'fournisseurs',
         component: PageFournisseurComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'nouveauFournisseur',
         component: NouveauClientFournisseurComponent,
-        canActivate: [ApplicationGuard],
+        canActivate: [applicationGuard],
         data: {
           origin: 'fournisseur'
         }
@@ -101,7 +104,7 @@ export const routes: Routes = [
       {
         path: 'commandesFournisseurs',
         component: PageCommandeClientsFournisseursComponent,
-        canActivate: [ApplicationGuard],
+        canActivate: [applicationGuard],
         data: {
           origin: 'fournisseurs'
         }
@@ -109,7 +112,7 @@ export const routes: Routes = [
       {
         path: 'nouvelleCommandeFournisseur',
         component: NouvelleCommandeClientFournisseurComponent,
-        canActivate: [ApplicationGuard],
+        canActivate: [applicationGuard],
         data: {
           origin: 'fournisseur'
         }
@@ -117,32 +120,32 @@ export const routes: Routes = [
       {
         path: 'Categorie',
         component: PageCategoriesComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'nouvelleCategorie',
         component: NouvelleCategorieComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'utilisateurs',
         component: PageUtilisateurComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'nouvelUtilisateur',
         component: NouvelUtilisateurComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'profil',
         component: PageProfilComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       },
       {
         path: 'changerMotDePasse',
         component: ChangerMotDePasseComponent,
-        canActivate: [ApplicationGuard]
+        canActivate: [applicationGuard]
       }
     ]
   }

@@ -12,6 +12,7 @@ import { StrictHttpResponse } from '../strict-http-response';
 import { authenticate } from '../fn/authentication/authenticate';
 import { Authenticate$Params } from '../fn/authentication/authenticate';
 import { AuthenticationResponse } from '../models/authentication-response';
+import {AuthenticationRequest} from "../models/authentication-request";
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService extends BaseService {
@@ -38,8 +39,12 @@ export class AuthenticationService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  authenticate(params: Authenticate$Params, context?: HttpContext): Observable<AuthenticationResponse> {
-    return this.authenticate$Response(params, context).pipe(
+  authenticate(params: AuthenticationRequest, context?: HttpContext): Observable<AuthenticationResponse> {
+    const authenticateParams: Authenticate$Params = {
+      body: params
+    }
+
+    return this.authenticate$Response(authenticateParams, context).pipe(
       map((r: StrictHttpResponse<AuthenticationResponse>): AuthenticationResponse => r.body)
     );
   }

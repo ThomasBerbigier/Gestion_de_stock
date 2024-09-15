@@ -1,9 +1,18 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+import { UserService } from '../user/user.service';
 
-export const ApplicationGuard: CanActivateFn = (
+export const applicationGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot) => {
-  return true;
+  state: RouterStateSnapshot
+): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
+  const userService = inject(UserService);
+  const router = inject(Router);
+
+  if (userService.isUserLoggedAndAccessTokenValid()) {
+    return true;
+  } else {
+    return router.createUrlTree(['/Login']);
+  }
 };
