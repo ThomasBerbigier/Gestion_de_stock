@@ -12,10 +12,10 @@ export interface Save3$Params {
       body: EntrepriseDto
 }
 
-export function save3(http: HttpClient, rootUrl: string, params: Save3$Params, context?: HttpContext): Observable<StrictHttpResponse<EntrepriseDto>> {
+export function save3(http: HttpClient, rootUrl: string, params: EntrepriseDto, context?: HttpContext | undefined): Observable<StrictHttpResponse<EntrepriseDto>> {
   const rb = new RequestBuilder(rootUrl, save3.PATH, 'post');
   if (params) {
-    rb.body(params.body, 'application/json');
+    rb.body(params, 'application/json');
   }
 
   return http.request(

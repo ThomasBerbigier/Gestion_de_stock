@@ -38,7 +38,7 @@ export class EntreprisesService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save3$Response(params: Save3$Params, context?: HttpContext): Observable<StrictHttpResponse<EntrepriseDto>> {
+  save3$Response(params: EntrepriseDto, context?: HttpContext | undefined): Observable<StrictHttpResponse<EntrepriseDto>> {
     return save3(this.http, this.rootUrl, params, context);
   }
 
@@ -48,7 +48,7 @@ export class EntreprisesService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save3(params: Save3$Params, context?: HttpContext): Observable<EntrepriseDto> {
+  save3(params: EntrepriseDto, context?: HttpContext): Observable<EntrepriseDto> {
     return this.save3$Response(params, context).pipe(
       map((r: StrictHttpResponse<EntrepriseDto>): EntrepriseDto => r.body)
     );
