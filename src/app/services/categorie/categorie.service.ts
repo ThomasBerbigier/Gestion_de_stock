@@ -22,4 +22,8 @@ export class CategorieService {
   findAll(): Observable<CategorieDto[]> {
     return this.categoriesService.findAll7();
   }
+
+  findById(idCategorie: number): Observable<CategorieDto> {
+    return this.categoriesService.findById7(idCategorie);
+  }
 }

@@ -128,6 +128,11 @@ export const routes: Routes = [
         canActivate: [applicationGuard]
       },
       {
+        path: 'nouvelleCategorie/:idCategorie',
+        component: NouvelleCategorieComponent,
+        canActivate: [applicationGuard]
+      },
+      {
         path: 'utilisateurs',
         component: PageUtilisateurComponent,
         canActivate: [applicationGuard]

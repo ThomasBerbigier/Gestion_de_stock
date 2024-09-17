@@ -12,10 +12,10 @@ export interface FindById7$Params {
   idCategorie: number;
 }
 
-export function findById7(http: HttpClient, rootUrl: string, params: FindById7$Params, context?: HttpContext): Observable<StrictHttpResponse<CategorieDto>> {
+export function findById7(http: HttpClient, rootUrl: string, params: number, context?: HttpContext | undefined): Observable<StrictHttpResponse<CategorieDto>> {
   const rb = new RequestBuilder(rootUrl, findById7.PATH, 'get');
   if (params) {
-    rb.path('idCategorie', params.idCategorie, {"style":"simple","explode":false});
+    rb.path('idCategorie', params, {"style":"simple","explode":false});
   }
 
   return http.request(
@@ -28,4 +28,4 @@ export function findById7(http: HttpClient, rootUrl: string, params: FindById7$P
   );
 }
 
-findById7.PATH = '/gestiondestock/v1/categories/{idCategorie}';
+findById7.PATH = '/gestiondestock/v1/categories/id/{idCategorie}';

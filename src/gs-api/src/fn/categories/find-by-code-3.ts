@@ -28,4 +28,4 @@ export function findByCode3(http: HttpClient, rootUrl: string, params: FindByCod
   );
 }
 
-findByCode3.PATH = '/gestiondestock/v1/categories/{codeCategorie}';
+findByCode3.PATH = '/gestiondestock/v1/categories/code/{codeCategorie}';

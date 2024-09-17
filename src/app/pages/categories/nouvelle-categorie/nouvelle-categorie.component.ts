@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faSquarePlus, faXmark} from "@fortawesome/free-solid-svg-icons";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {CategorieDto} from "../../../../gs-api/src/models/categorie-dto";
 import {CategoriesService} from "../../../../gs-api/src/services/categories.service";
@@ -21,7 +21,7 @@ import {NgForOf, NgIf} from "@angular/common";
   templateUrl: './nouvelle-categorie.component.html',
   styleUrl: './nouvelle-categorie.component.scss'
 })
-export class NouvelleCategorieComponent {
+export class NouvelleCategorieComponent implements OnInit{
 
   categorieDto: CategorieDto = {};
   errorMsg: Array<string> = [];
@@ -31,8 +31,19 @@ export class NouvelleCategorieComponent {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private categorieService: CategorieService,
   ) {
+  }
+
+  ngOnInit(): void {
+    const idCategorie = this.activatedRoute.snapshot.params['idCategorie'];
+    if(idCategorie) {
+      this.categorieService.findById(idCategorie)
+        .subscribe(cat => {
+          this.categorieDto = cat;
+        });
+    }
   }
 
   cancel(): void {

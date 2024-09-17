@@ -77,7 +77,7 @@ export class CategoriesService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findById7$Response(params: FindById7$Params, context?: HttpContext): Observable<StrictHttpResponse<CategorieDto>> {
+  findById7$Response(params: number, context?: HttpContext | undefined): Observable<StrictHttpResponse<CategorieDto>> {
     return findById7(this.http, this.rootUrl, params, context);
   }
 
@@ -91,7 +91,7 @@ export class CategoriesService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findById7(params: FindById7$Params, context?: HttpContext): Observable<CategorieDto> {
+  findById7(params: number, context?: HttpContext): Observable<CategorieDto> {
     return this.findById7$Response(params, context).pipe(
       map((r: StrictHttpResponse<CategorieDto>): CategorieDto => r.body)
     );
