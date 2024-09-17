@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-8">
     <div class="input-group flex-lg-nowrap">
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="Rechercher" aria-label="Username" aria-describedby="basic-addon1">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1"><fa-icon [icon]="faMagnifyingGlass"></fa-icon></span>
       </div>
@@ -10,7 +10,7 @@
   <div class="col-md-4">
     <div class="row">
       <div class="col-md-10 text-end">
-        <span>Bonjour Thomas</span>
+        <span>Bonjour {{connectedUser.nom}}&nbsp;</span>
       </div>
       <div class="col-md-2">
         <a href="javascript:void(0);" [routerLink]="['/profil']">

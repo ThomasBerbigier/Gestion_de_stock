@@ -17,18 +17,21 @@
   <div class="card col-md-6 ps-0 pe-0 mt-3">
     <form>
       <div class="mb-3 mt-3">
-        <input type="email" class="form-control" aria-describedby="text" placeholder="Ancien mot de passe">
+        <input type="email" class="form-control" name="ancienmotdepasse" aria-describedby="text" placeholder="Ancien mot de passe"
+               [(ngModel)]="ancienMotDePasse">
       </div>
       <div class="mb-3">
-        <input type="password" class="form-control" aria-describedby="text" placeholder="Nouveau mot de passe">
+        <input type="password" class="form-control" name="nouveaumotdepasse" aria-describedby="text" placeholder="Nouveau mot de passe"
+               [(ngModel)]="changerMotDePasseDto.motDePasse">
       </div>
       <div class="mb-3">
-        <input type="password" class="form-control" aria-describedby="text" placeholder="Confirmer mot de passe">
+        <input type="password" class="form-control" name="confirmmotdepasse" aria-describedby="text" placeholder="Confirmer mot de passe"
+               [(ngModel)]="changerMotDePasseDto.confirmMotDePasse">
       </div>
     </form>
     <div class="row text-end mt-2 mb-2">
       <div class="col-md-12 text-center">
-        <button class="btn btn-primary me-3">
+        <button class="btn btn-primary me-3" (click)="changerMotDePasseUtilisateur()">
           <fa-icon [icon]="faSquarePlus"></fa-icon>&nbsp;
           Enregistrer
         </button>

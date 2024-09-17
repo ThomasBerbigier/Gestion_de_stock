@@ -6,16 +6,17 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { ChangerMotDePasseUtilisateurDto } from '../../models/changer-mot-de-passe-utilisateur-dto';
 import { UtilisateurDto } from '../../models/utilisateur-dto';
 
-export interface FindByEmail$Params {
-  email: string;
+export interface ChangerMotDePasse$Params {
+      body: ChangerMotDePasseUtilisateurDto
 }
 
-export function findByEmail(http: HttpClient, rootUrl: string, params: string, context?: HttpContext | undefined): Observable<StrictHttpResponse<UtilisateurDto>> {
-  const rb = new RequestBuilder(rootUrl, findByEmail.PATH, 'get');
+export function changerMotDePasse(http: HttpClient, rootUrl: string, params: ChangerMotDePasseUtilisateurDto, context?: HttpContext | undefined): Observable<StrictHttpResponse<UtilisateurDto>> {
+  const rb = new RequestBuilder(rootUrl, changerMotDePasse.PATH, 'post');
   if (params) {
-    rb.path('email', params, {"style":"simple","explode":false});
+    rb.body(params, 'application/json');
   }
 
   return http.request(
@@ -28,4 +29,4 @@ export function findByEmail(http: HttpClient, rootUrl: string, params: string, c
   );
 }
 
-findByEmail.PATH = '/gestiondestock/v1/utilisateurs/find/{email}';
+changerMotDePasse.PATH = '/gestiondestock/v1/utilisateurs/update/password';

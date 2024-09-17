@@ -33,7 +33,9 @@ export class PageLoginComponent {
   login() {
     this.userService.login(this.authenticationRequest).pipe(
       tap((data: AuthenticationResponse) => {
-        this.userService.setConnectedUser(data);
+        console.log('Authentication Response:', data);
+        this.userService.setAccessToken(data);
+        this.getUserByEmail();
         this.router.navigate(['']);
       }),
       catchError(error => {
@@ -41,5 +43,12 @@ export class PageLoginComponent {
         return of(null);  // Retourne un observable pour permettre la continuité
       })
     ).subscribe();  // Nécessaire pour déclencher l'exécution de l'observable
+  }
+
+  getUserByEmail(): void {
+    this.userService.getUserByEmail(this.authenticationRequest.login)
+      .subscribe(user => {
+        this.userService.setConnectedUser(user);
+      })
   }
 }

@@ -5,6 +5,7 @@ export { ArticleDto } from './models/article-dto';
 export { AuthenticationRequest } from './models/authentication-request';
 export { AuthenticationResponse } from './models/authentication-response';
 export { CategorieDto } from './models/categorie-dto';
+export { ChangerMotDePasseUtilisateurDto } from './models/changer-mot-de-passe-utilisateur-dto';
 export { ClientDto } from './models/client-dto';
 export { CommandeClientDto } from './models/commande-client-dto';
 export { CommandeFournisseurDto } from './models/commande-fournisseur-dto';

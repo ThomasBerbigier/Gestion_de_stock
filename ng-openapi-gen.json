@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/ng-openapi-gen/ng-openapi-gen-schema.json",
+  "input": "./tools/openapi/src/openapi.yaml",
+  "output": "src/gs-api/src",
+  "customizedResponseType": {
+    ".*": {
+      "toUse": "json"
+    }
+  }
+}

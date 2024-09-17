@@ -22,7 +22,7 @@ export class PageInscriptionComponent {
 
   entrepriseDto: EntrepriseDto = {};
   adresse: AdresseDto = {};
-  errorMsg: string[] = [];
+  errorMsg: Array<string> = [];
 
   constructor(
     private entrepriseService: EntrepriseService,
@@ -36,37 +36,37 @@ export class PageInscriptionComponent {
     this.entrepriseService.sinscrire(this.entrepriseDto)
       .subscribe({
         next: (entrepriseDto) => {
-          // Logique quand l'inscription réussit
-          const authenticationRequest: AuthenticationRequest = {
-            login: this.entrepriseDto.email,
-            password: 'som3R@nd0mP@$$word'
-          }
-          this.userService.login(authenticationRequest)
-            .subscribe(response => {
-              this.userService.setConnectedUser(response);
-              this.router.navigate(['changerMotDePasse']);
-            })
+          this.connectEntreprise();
         },
         error: (error) => {
-          if (error.error instanceof Blob) {
-            // Si l'erreur est de type Blob, la convertir en texte puis en JSON
-            error.error.text().then((text: string) => {
-              try {
-                const jsonError = JSON.parse(text); // Convertir le texte en JSON
-                this.errorMsg = jsonError.errors || ['Erreur inconnue'];
-              } catch (e) {
-                this.errorMsg = ['Erreur inconnue'];
-              }
-            });
-          } else {
-            this.errorMsg = error.error.errors || ['Erreur inconnue'];
-          }
-        },
-        complete: () => {
-          // Logique à exécuter une fois que l'observable est complété, si nécessaire
+          this.errorMsg = error.error.errors;
         }
       });
   }
 
+  connectEntreprise(): void {
+    const authenticationRequest: AuthenticationRequest = {
+      login: this.entrepriseDto.email,
+      password: 'som3R@nd0mP@$$word'
+    };
+    this.userService.login(authenticationRequest)
+      .subscribe({
+        next: (response) => {
+          this.userService.setAccessToken(response);
+          this.getUserByEmail(authenticationRequest.login);
+          localStorage.setItem('origin', 'Inscription');
+          this.router.navigate(['changerMotDePasse']);
+        }
+      });
+  }
+
+  getUserByEmail(email?: string): void {
+    this.userService.getUserByEmail(email)
+      .subscribe({
+        next: (user) => {
+          this.userService.setConnectedUser(user);
+        }
+      });
+  }
 
 }

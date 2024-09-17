@@ -13,18 +13,20 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authenticationResponse: AuthenticationResponse = {};
-    if (localStorage.getItem('connectedUser')) {
+    if (localStorage.getItem('accessToken')) {
       authenticationResponse = JSON.parse(
-        localStorage.getItem('connectedUser') as string
+        localStorage.getItem('accessToken') as string
       );
-    }
+      console.log('Authorization Header:', 'Bearer ' + authenticationResponse.accessToken);
       const authReq = req.clone({
         headers: new HttpHeaders({
-          Authorization: 'Bearer ' + authenticationResponse.accessToken
+          Authorization: 'Bearer ' + authenticationResponse.accessToken,
         })
       });
       return next.handle(authReq);
     }
+    return next.handle(req);
+  }
 
 
 }

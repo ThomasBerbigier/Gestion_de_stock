@@ -52,6 +52,27 @@ paths:
       x-content-type: application/json
       x-accepts:
       - '*/*'
+  /gestiondestock/v1/utilisateurs/update/password:
+    post:
+      operationId: changerMotDePasse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangerMotDePasseUtilisateurDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UtilisateurDto'
+          description: OK
+      tags:
+      - utilisateurs
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
   /gestiondestock/v1/utilisateurs/create:
     post:
       operationId: save_1
@@ -1782,6 +1803,20 @@ components:
         idEntreprise:
           format: int32
           type: integer
+      type: object
+    ChangerMotDePasseUtilisateurDto:
+      example:
+        confirmMotDePasse: confirmMotDePasse
+        motDePasse: motDePasse
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        motDePasse:
+          type: string
+        confirmMotDePasse:
+          type: string
       type: object
     AdresseDto:
       example:
