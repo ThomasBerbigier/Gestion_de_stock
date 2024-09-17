@@ -4,20 +4,25 @@
       <h2>Nouvelle catégorie</h2>
     </div>
     <div class="col-md-12">
-      <div class="row mb-3">
-        <div class="col">
-          <input class="form-control" type="text" placeholder="Code catégorie" required>
+      <div class="alert alert-danger" *ngIf="errorMsg && errorMsg.length > 0">
+        <div *ngFor="let msg of errorMsg">
+          <span >{{msg}}</span>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col">
-          <input class="form-control" type="text" placeholder="Description" required>
+          <input class="form-control" type="text" placeholder="Code catégorie" name="codeCat" [(ngModel)]="categorieDto.code" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <input class="form-control" type="text" placeholder="Description" name="designationCat" [(ngModel)]="categorieDto.designation" required>
         </div>
       </div>
     </div>
   </div>
   <div class="col-md-12 text-end">
-    <button class="btn btn-primary me-3">
+    <button class="btn btn-primary me-3" (click)="enregistrerCategorie()">
       <fa-icon [icon]="faSquarePlus"></fa-icon>&nbsp;
       Enregistrer
     </button>

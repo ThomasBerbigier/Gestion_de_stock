@@ -44,7 +44,7 @@ export class CategoriesService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save7$Response(params: Save7$Params, context?: HttpContext): Observable<StrictHttpResponse<CategorieDto>> {
+  save7$Response(params: CategorieDto, context?: HttpContext | undefined): Observable<StrictHttpResponse<CategorieDto>> {
     return save7(this.http, this.rootUrl, params, context);
   }
 
@@ -58,7 +58,7 @@ export class CategoriesService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save7(params: Save7$Params, context?: HttpContext): Observable<CategorieDto> {
+  save7(params: CategorieDto, context?: HttpContext): Observable<CategorieDto> {
     return this.save7$Response(params, context).pipe(
       map((r: StrictHttpResponse<CategorieDto>): CategorieDto => r.body)
     );
