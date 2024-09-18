@@ -10,6 +10,9 @@
     </div>
   </div>
   <div class="col m-3">
+    <div class="row col-md-12 alert alert-danger" *ngIf="errorMsg">
+      {{errorMsg}}
+    </div>
     <div class="row m-3">
       <div class="row col-md-12 custom-border mb-3 p-3" *ngFor="let cat of listCategories">
         <div class="col-md-3 border-right text-center">
@@ -27,7 +30,7 @@
               </button>
             </div>
             <div class="col-md-4 me-3">
-              <button type="button" class="btn btn-danger">
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteCat" (click)="selectSupprimerCat(cat.id)">
                 <fa-icon [icon]="faTrashCan"></fa-icon>
                 Supprimer
               </button>
@@ -44,6 +47,34 @@
     </div>
   </div>
   <div class="row mb-3 text-center" *ngIf="listCategories.length > 0">
-    <app-pagination></app-pagination>
+    <div class="col-md12 text-center">
+      <app-pagination></app-pagination>
+    </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDeleteCat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation de suppression</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Etes-vous sur de vouloir supprimer cette catégorie?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="annulerSupprimerCat()">
+          <fa-icon [icon]="faXmark"></fa-icon>
+          Annuler
+        </button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="confirmerSupprimerCat()">
+          <fa-icon [icon]="faTrashCan"></fa-icon>
+          Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

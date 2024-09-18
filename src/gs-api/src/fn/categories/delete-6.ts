@@ -11,10 +11,10 @@ export interface Delete6$Params {
   idCategorie: number;
 }
 
-export function delete6(http: HttpClient, rootUrl: string, params: Delete6$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+export function delete6(http: HttpClient, rootUrl: string, params: number, context?: HttpContext | undefined): Observable<StrictHttpResponse<void>> {
   const rb = new RequestBuilder(rootUrl, delete6.PATH, 'delete');
   if (params) {
-    rb.path('idCategorie', params.idCategorie, {"style":"simple","explode":false});
+    rb.path('idCategorie', params, {"style":"simple","explode":false});
   }
 
   return http.request(

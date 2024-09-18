@@ -8,7 +8,7 @@ import {CategoriesService} from "../../../../gs-api/src/services/categories.serv
 import {CategorieService} from "../../../services/categorie/categorie.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {faEllipsis, faPencil, faTrashCan} from "@fortawesome/free-solid-svg-icons";
+import {faEllipsis, faPencil, faTrashCan, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-page-categories',
@@ -26,7 +26,15 @@ import {faEllipsis, faPencil, faTrashCan} from "@fortawesome/free-solid-svg-icon
 })
 export class PageCategoriesComponent implements OnInit{
 
+  protected readonly faXmark = faXmark;
+  protected readonly faTrashCan = faTrashCan;
+  protected readonly faPencil = faPencil;
+  protected readonly faEllipsis = faEllipsis;
+
+
   listCategories: Array<CategorieDto> = [];
+  selectedCatIdToDelete ? = -1;
+  errorMsg = '';
 
   constructor(
     private router: Router,
@@ -34,21 +42,44 @@ export class PageCategoriesComponent implements OnInit{
   ) {}
 
   ngOnInit() {
+    this.findAllCategories()
+  }
+
+  findAllCategories() {
     this.categorieService.findAll()
     .subscribe(res => {
       this.listCategories = res;
     })
+
   }
 
   nouvelleCategorie() {
     this.router.navigate(['nouvelleCategorie'])
   }
 
-  protected readonly faTrashCan = faTrashCan;
-  protected readonly faPencil = faPencil;
-  protected readonly faEllipsis = faEllipsis;
-
   modifierCategorie(id: number | undefined): void {
     this.router.navigate(['nouvelleCategorie', id]);
+  }
+
+  selectSupprimerCat(id?: number): void {
+    this.selectedCatIdToDelete = id;
+  }
+
+  confirmerSupprimerCat(): void {
+    if (this.selectedCatIdToDelete !== -1) {
+      this.categorieService.delete(this.selectedCatIdToDelete)
+        .subscribe({
+          next: (res) => {
+            this.findAllCategories();
+          },
+          error: (error) => {
+            this.errorMsg = error.error.message;
+          }
+        });
+    }
+  }
+
+  annulerSupprimerCat(): void {
+    this.selectedCatIdToDelete = -1;
   }
 }
