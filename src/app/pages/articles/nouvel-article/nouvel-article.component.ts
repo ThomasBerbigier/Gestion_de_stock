@@ -44,6 +44,15 @@ export class NouvelArticleComponent implements OnInit {
       .subscribe(categories => {
         this.listeCategorie = categories;
       });
+
+    const idArticle = this.activatedRoute.snapshot.params['idArticle'];
+    if(idArticle) {
+      this.articleService.findArticleById(idArticle)
+        .subscribe( article => {
+          this.articleDto = article;
+          this.categorieDto = this.articleDto.categorie ? this.articleDto.categorie : {};
+        });
+    }
   }
 
   cancel(): void {

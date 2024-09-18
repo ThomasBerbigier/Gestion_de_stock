@@ -55,6 +55,11 @@ export const routes: Routes = [
         canActivate: [applicationGuard]
       },
       {
+        path: 'NouvelArticle/:idArticle',
+        component: NouvelArticleComponent,
+        canActivate: [applicationGuard]
+      },
+      {
         path: 'mouvement-stock',
         component: PageMouvementStockComponent,
         canActivate: [applicationGuard]

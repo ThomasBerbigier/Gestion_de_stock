@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {faInfo, faEuroSign, faFontAwesome, faPencil, faTrashCan, faEllipsis} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {ArticleDto} from "../../../gs-api/src/models/article-dto";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-detail-article',
@@ -23,5 +24,12 @@ export class DetailArticleComponent {
   @Input()
   articleDto: ArticleDto = {};
 
+  constructor(
+    private router: Router,
+  ) {
+  }
 
+  modifierArticle(): void {
+    this.router.navigate(['NouvelArticle', this.articleDto.id]);
+  }
 }
