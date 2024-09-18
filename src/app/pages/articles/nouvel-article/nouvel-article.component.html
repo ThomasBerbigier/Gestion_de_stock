@@ -24,10 +24,14 @@
       </div>
       <div class="row mb-3">
         <div class="col">
-          <input class="form-control" name="prixunitaireht" type="text" placeholder="Prix unitaire HT" required [(ngModel)]="articleDto.prixUnitaireHt">
+          <input class="form-control" name="prixunitaireht" type="text" placeholder="Prix unitaire HT" required
+                 (input)="calculerTTC()"
+                 [(ngModel)]="articleDto.prixUnitaireHt">
         </div>
         <div class="col">
-          <input class="form-control" name="tauxtva" type="text" placeholder="Taux TVA" required [(ngModel)]="articleDto.tauxTva">
+          <input class="form-control" name="tauxtva" type="text" placeholder="Taux TVA" required
+                 (input)="calculerTTC()"
+                 [(ngModel)]="articleDto.tauxTva">
         </div>
       </div>
       <div class="row mb-3">

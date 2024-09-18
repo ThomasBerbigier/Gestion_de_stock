@@ -73,4 +73,12 @@ export class NouvelArticleComponent implements OnInit {
         }
       });
   }
+
+  calculerTTC(): void {
+    if(this.articleDto.prixUnitaireHt && this.articleDto.tauxTva) {
+      // prixHt + (prixHt * (tauxTva / 100))
+      this.articleDto.prixUnitaireTtc =
+        +this.articleDto.prixUnitaireHt + (+(this.articleDto.prixUnitaireHt * (this.articleDto.tauxTva / 100)));
+    }
+  }
 }
