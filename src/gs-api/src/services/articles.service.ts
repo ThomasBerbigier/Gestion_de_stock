@@ -55,7 +55,7 @@ export class ArticlesService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save8$Response(params: Save8$Params, context?: HttpContext): Observable<StrictHttpResponse<ArticleDto>> {
+  save8$Response(params: ArticleDto, context?: HttpContext | undefined): Observable<StrictHttpResponse<ArticleDto>> {
     return save8(this.http, this.rootUrl, params, context);
   }
 
@@ -69,7 +69,7 @@ export class ArticlesService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save8(params: Save8$Params, context?: HttpContext): Observable<ArticleDto> {
+  save8(params: ArticleDto, context?: HttpContext): Observable<ArticleDto> {
     return this.save8$Response(params, context).pipe(
       map((r: StrictHttpResponse<ArticleDto>): ArticleDto => r.body)
     );
@@ -88,7 +88,7 @@ export class ArticlesService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findById8$Response(params: FindById8$Params, context?: HttpContext): Observable<StrictHttpResponse<ArticleDto>> {
+  findById8$Response(params: number, context?: HttpContext | undefined): Observable<StrictHttpResponse<ArticleDto>> {
     return findById8(this.http, this.rootUrl, params, context);
   }
 
@@ -102,7 +102,7 @@ export class ArticlesService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findById8(params: FindById8$Params, context?: HttpContext): Observable<ArticleDto> {
+  findById8(params: number, context?: HttpContext): Observable<ArticleDto> {
     return this.findById8$Response(params, context).pipe(
       map((r: StrictHttpResponse<ArticleDto>): ArticleDto => r.body)
     );

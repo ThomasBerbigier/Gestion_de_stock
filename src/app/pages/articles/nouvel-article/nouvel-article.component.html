@@ -7,39 +7,44 @@
       <h2><fa-icon [icon]="faInfo" class="me-2 blue-color "></fa-icon>&nbsp;Information sur l'article</h2>
     </div>
     <div class="col-md-12">
-      <div class="row mb-3">
-        <div class="col">
-          <input class="form-control" type="text" placeholder="Code article" required>
-        </div>
-        <div class="col">
-          <input class="form-control" type="text" placeholder="Designation" required>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col">
-          <input class="form-control" type="text" placeholder="Prix unitaire HT" required>
-        </div>
-        <div class="col">
-          <input class="form-control" type="text" placeholder="Taux TVA" required>
+      <div>
+        <div class="alert alert-danger" *ngIf="errorMsg.length">
+          <div *ngFor="let msg of errorMsg">
+            <span>{{msg}}</span>
+          </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col">
-          <input class="form-control" type="text" placeholder="Prix unitaire TTC" required>
+          <input class="form-control" name="codearticle" type="text" placeholder="Code article" required [(ngModel)]="articleDto.codeArticle">
         </div>
         <div class="col">
-          <select class="form-select" aria-label="Default select example">
+          <input class="form-control" name="designation" type="text" placeholder="Designation" required [(ngModel)]="articleDto.designation">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <input class="form-control" name="prixunitaireht" type="text" placeholder="Prix unitaire HT" required [(ngModel)]="articleDto.prixUnitaireHt">
+        </div>
+        <div class="col">
+          <input class="form-control" name="tauxtva" type="text" placeholder="Taux TVA" required [(ngModel)]="articleDto.tauxTva">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <input class="form-control" name="prixunitairettc" type="text" placeholder="Prix unitaire TTC" required [(ngModel)]="articleDto.prixUnitaireTtc">
+        </div>
+        <div class="col">
+          <select class="form-select" name="cat" aria-label="Default select example" [(ngModel)]="categorieDto.id">
             <option selected>Sélectionner une catégorie</option>
-            <option value="1">5%</option>
-            <option value="2">10%</option>
-            <option value="3">20%</option>
+            <option *ngFor="let cat of listeCategorie" [value]="cat.id">{{cat.code}} - {{cat.designation}}</option>
           </select>
         </div>
       </div>
     </div>
   </div>
   <div class="col-md-12 text-end">
-    <button class="btn btn-primary me-3">
+    <button class="btn btn-primary me-3" (click)="enregistrerArticle()">
       <fa-icon [icon]="faSquarePlus"></fa-icon>&nbsp;
       Enregistrer
     </button>
