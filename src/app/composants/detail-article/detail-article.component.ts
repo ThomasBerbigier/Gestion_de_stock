@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {faInfo, faEuroSign, faFontAwesome, faPencil, faTrashCan, faEllipsis} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {ArticleDto} from "../../../gs-api/src/models/article-dto";
 
 @Component({
   selector: 'app-detail-article',
@@ -18,4 +19,9 @@ export class DetailArticleComponent {
   protected readonly faTrashCan = faTrashCan;
   protected readonly faEllipsis = faEllipsis;
   protected readonly faFontAwesome = faFontAwesome;
+
+  @Input()
+  articleDto: ArticleDto = {};
+
+
 }

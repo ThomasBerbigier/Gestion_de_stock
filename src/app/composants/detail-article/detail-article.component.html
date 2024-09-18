@@ -7,19 +7,19 @@
   <div class="col-md-5 border-right my-1">
     <div class="d-flex align-items-center mb-2">
       <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
-      <span>Code article</span>
+      <span>{{ articleDto.codeArticle }}</span>
     </div>
     <div class="d-flex align-items-center mb-2">
       <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
-      <span>Désignation</span>
+      <span>{{ articleDto.designation }}</span>
     </div>
     <div class="d-flex align-items-center mb-2">
       <fa-icon [icon]="faEuroSign" class="me-2 blue-color"></fa-icon>
-      <span>Prix HT</span>
+      <span>{{ articleDto.prixUnitaireHt }}</span>
     </div>
     <div class="d-flex align-items-center">
       <fa-icon [icon]="faEuroSign" class="me-2 blue-color"></fa-icon>
-      <span>Prix TTC</span>
+      <span>{{ articleDto.prixUnitaireTtc }}</span>
     </div>
   </div>
 
@@ -31,8 +31,8 @@
       </div>
       <div class="col-md-10">
         <div class="row">
-          <span class="col-md-12">Code catégorie</span>
-          <span class="col-md-12">Description catégorie</span>
+          <span class="col-md-12">{{ articleDto.categorie?.code }}</span>
+          <span class="col-md-12">{{ articleDto.categorie?.designation }}</span>
         </div>
       </div>
     </div>
