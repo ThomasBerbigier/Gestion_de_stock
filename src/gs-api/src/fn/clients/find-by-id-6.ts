@@ -12,10 +12,10 @@ export interface FindById6$Params {
   idClient: number;
 }
 
-export function findById6(http: HttpClient, rootUrl: string, params: FindById6$Params, context?: HttpContext): Observable<StrictHttpResponse<ClientDto>> {
+export function findById6(http: HttpClient, rootUrl: string, params: number, context?: HttpContext | undefined): Observable<StrictHttpResponse<ClientDto>> {
   const rb = new RequestBuilder(rootUrl, findById6.PATH, 'get');
   if (params) {
-    rb.path('idClient', params.idClient, {"style":"simple","explode":false});
+    rb.path('idClient', params, {"style":"simple","explode":false});
   }
 
   return http.request(

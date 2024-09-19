@@ -6,57 +6,68 @@
     <div class="col-md-12 mb-3">
       <h2><fa-icon [icon]="faInfo" class="me-2 blue-color "></fa-icon>&nbsp;Information du {{origin}}</h2>
     </div>
+    <div class="alert alert-danger" *ngIf="errorMsg.length">
+      <div *ngFor="let msg of errorMsg">
+        {{msg}}
+      </div>
+    </div>
     <div class="col-md-12">
       <div class="row mb-3">
         <div class="col">
-          <input class="form-control" type="text" placeholder="Nom" required>
+          <input class="form-control" type="text" placeholder="Nom" name="nom" required
+          [(ngModel)]="clientFournisseur.nom">
         </div>
         <div class="col">
-          <input class="form-control" type="text" placeholder="Adresse 1 " required>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col">
-          <input class="form-control" type="text" placeholder="Prénom" required>
-        </div>
-        <div class="col">
-          <input class="form-control" type="text" placeholder="Adresse 2" required>
+          <input class="form-control" type="text" name="adresse1" placeholder="Adresse 1 " required
+                 [(ngModel)]="adresseDto.adresse1">
         </div>
       </div>
       <div class="row mb-3">
         <div class="col">
-          <input class="form-control" type="text" placeholder="Email" required>
+          <input class="form-control" type="text" name="prenom" placeholder="Prénom" required
+                 [(ngModel)]="clientFournisseur.prenom">
+        </div>
+        <div class="col">
+          <input class="form-control" type="text" name="adresse2" placeholder="Adresse 2" required
+                 [(ngModel)]="adresseDto.adresse2">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <input class="form-control" type="text" name="mail" placeholder="Email" required
+                 [(ngModel)]="clientFournisseur.mail">
         </div>
         <div class="col">
           <div class="col">
-            <input class="form-control" type="text" placeholder="Ville" required>
+            <input class="form-control" type="text" name="ville" placeholder="Ville" required
+                   [(ngModel)]="adresseDto.ville">
           </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col">
-          <input class="form-control" type="text" placeholder="Téléphone 1" required>
+          <input class="form-control" type="text" name="numtel" placeholder="Téléphone 1" required
+                 [(ngModel)]="clientFournisseur.numTel">
         </div>
         <div class="col">
           <div class="col">
-            <input class="form-control" type="text" placeholder="Code Postal" required>
+            <input class="form-control" type="text" name="codepostal" placeholder="Code Postal" required
+                   [(ngModel)]="adresseDto.codePostal">
           </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col">
-          <input class="form-control" type="text" placeholder="Téléphone 2">
-        </div>
-        <div class="col">
           <div class="col">
-            <input class="form-control" type="text" placeholder="Pays" required>
+            <input class="form-control" type="text" name="pays" placeholder="Pays" required
+                   [(ngModel)]="adresseDto.pays">
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="col-md-12 text-end">
-    <button class="btn btn-primary me-3" (click)="saveClick()">
+    <button class="btn btn-primary me-3" (click)="enregistrer()">
       <fa-icon [icon]="faSquarePlus"></fa-icon>&nbsp;
       Enregistrer
     </button>

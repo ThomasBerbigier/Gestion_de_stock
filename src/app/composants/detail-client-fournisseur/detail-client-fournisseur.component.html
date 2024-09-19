@@ -1,5 +1,4 @@
-
-  <!-- Details client  -->
+ <!-- Details client  -->
 <div class="row mb-1 custom-border">
   <div class="col-md-1 border-right d-flex align-items-center justify-content-center my-1">
     <img src="assets/3d_delivery_box_parcel.jpg" alt="image d'un carton" class="custom-image rounded-circle">
@@ -8,37 +7,29 @@
   <div class="col-md-5 border-right my-1">
     <div class="d-flex align-items-center mb-2">
       <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
-      <span>Nom</span>
+      <span>{{ clientFournisseur.nom }}</span>
     </div>
     <div class="d-flex align-items-center mb-2">
       <fa-icon [icon]="faInfo" class="me-2 blue-color"></fa-icon>
-      <span>Prénom</span>
+      <span>{{ clientFournisseur.prenom }}</span>
     </div>
     <div class="d-flex align-items-center mb-2">
       <fa-icon [icon]="faPhone" class="me-2 blue-color"></fa-icon>
-      <span>Téléphone 1</span>
-    </div>
-    <div class="d-flex align-items-center mb-2">
-      <fa-icon [icon]="faPhone" class="me-2 blue-color"></fa-icon>
-      <span>Téléphone 2</span>
+      <span>{{ clientFournisseur.numTel }}</span>
     </div>
   </div>
   <div class="col-md-3 border-right my-1">
     <div class="d-flex align-items-center mb-2">
       <fa-icon [icon]="faHome" class="me-2 blue-color"></fa-icon>
-      <span>Adresse 1</span>
-    </div>
-    <div class="d-flex align-items-center mb-2">
-      <fa-icon [icon]="faHome" class="me-2 blue-color"></fa-icon>
-      <span>Adresse 2</span>
+      <span>{{ clientFournisseur.adresse?.adresse1 }}&nbsp;{{ clientFournisseur.adresse?.adresse2 }}</span>
     </div>
     <div class="d-flex align-items-center mb-2">
       <fa-icon [icon]="faMapLocationDot" class="me-2 blue-color"></fa-icon>
-      <span>Code Postal</span>
+      <span>{{ clientFournisseur.adresse?.codePostal }}&nbsp;{{ clientFournisseur.adresse?.ville }}</span>
     </div>
     <div class="d-flex align-items-center mb-2">
       <fa-icon [icon]="faEarthAmerica" class="me-2 blue-color"></fa-icon>
-      <span>Pays</span>
+      <span>{{ clientFournisseur.adresse?.pays }}</span>
     </div>
   </div>
   <!-- Details action  -->

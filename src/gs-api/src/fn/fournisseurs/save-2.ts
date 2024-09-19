@@ -12,14 +12,14 @@ export interface Save2$Params {
       body: FournisseurDto
 }
 
-export function save2(http: HttpClient, rootUrl: string, params: Save2$Params, context?: HttpContext): Observable<StrictHttpResponse<FournisseurDto>> {
+export function save2(http: HttpClient, rootUrl: string, params: FournisseurDto, context?: HttpContext | undefined): Observable<StrictHttpResponse<FournisseurDto>> {
   const rb = new RequestBuilder(rootUrl, save2.PATH, 'post');
   if (params) {
-    rb.body(params.body, 'application/json');
+    rb.body(params, 'application/json');
   }
 
   return http.request(
-    rb.build({ responseType: 'blob', accept: '*/*', context })
+    rb.build({ responseType: 'json', accept: 'application/json', context })
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {

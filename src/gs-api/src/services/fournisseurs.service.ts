@@ -38,7 +38,7 @@ export class FournisseursService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save2$Response(params: Save2$Params, context?: HttpContext): Observable<StrictHttpResponse<FournisseurDto>> {
+  save2$Response(params: FournisseurDto, context?: HttpContext | undefined): Observable<StrictHttpResponse<FournisseurDto>> {
     return save2(this.http, this.rootUrl, params, context);
   }
 
@@ -48,7 +48,7 @@ export class FournisseursService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save2(params: Save2$Params, context?: HttpContext): Observable<FournisseurDto> {
+  save2(params: FournisseurDto, context?: HttpContext): Observable<FournisseurDto> {
     return this.save2$Response(params, context).pipe(
       map((r: StrictHttpResponse<FournisseurDto>): FournisseurDto => r.body)
     );
@@ -63,7 +63,7 @@ export class FournisseursService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findById2$Response(params: FindById2$Params, context?: HttpContext): Observable<StrictHttpResponse<FournisseurDto>> {
+  findById2$Response(params: number, context?: HttpContext | undefined): Observable<StrictHttpResponse<FournisseurDto>> {
     return findById2(this.http, this.rootUrl, params, context);
   }
 
@@ -73,7 +73,7 @@ export class FournisseursService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findById2(params: FindById2$Params, context?: HttpContext): Observable<FournisseurDto> {
+  findById2(params: number, context?: HttpContext): Observable<FournisseurDto> {
     return this.findById2$Response(params, context).pipe(
       map((r: StrictHttpResponse<FournisseurDto>): FournisseurDto => r.body)
     );

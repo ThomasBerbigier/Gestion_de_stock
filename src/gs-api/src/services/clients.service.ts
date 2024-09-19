@@ -38,7 +38,7 @@ export class ClientsService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save6$Response(params: Save6$Params, context?: HttpContext): Observable<StrictHttpResponse<ClientDto>> {
+  save6$Response(params: ClientDto, context?: HttpContext | undefined): Observable<StrictHttpResponse<ClientDto>> {
     return save6(this.http, this.rootUrl, params, context);
   }
 
@@ -48,7 +48,7 @@ export class ClientsService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  save6(params: Save6$Params, context?: HttpContext): Observable<ClientDto> {
+  save6(params: ClientDto, context?: HttpContext): Observable<ClientDto> {
     return this.save6$Response(params, context).pipe(
       map((r: StrictHttpResponse<ClientDto>): ClientDto => r.body)
     );
@@ -63,7 +63,7 @@ export class ClientsService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findById6$Response(params: FindById6$Params, context?: HttpContext): Observable<StrictHttpResponse<ClientDto>> {
+  findById6$Response(params: number, context?: HttpContext | undefined): Observable<StrictHttpResponse<ClientDto>> {
     return findById6(this.http, this.rootUrl, params, context);
   }
 
@@ -73,7 +73,7 @@ export class ClientsService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  findById6(params: FindById6$Params, context?: HttpContext): Observable<ClientDto> {
+  findById6(params: number, context?: HttpContext): Observable<ClientDto> {
     return this.findById6$Response(params, context).pipe(
       map((r: StrictHttpResponse<ClientDto>): ClientDto => r.body)
     );
@@ -113,7 +113,9 @@ export class ClientsService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  deleteById$Response(params: DeleteById$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  deleteById$Response(params: {
+    idClient: number
+  }, context?: HttpContext | undefined): Observable<StrictHttpResponse<void>> {
     return deleteById(this.http, this.rootUrl, params, context);
   }
 
@@ -123,7 +125,7 @@ export class ClientsService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  deleteById(params: DeleteById$Params, context?: HttpContext): Observable<void> {
+  deleteById(params: { idClient: number }, context?: HttpContext): Observable<void> {
     return this.deleteById$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
     );

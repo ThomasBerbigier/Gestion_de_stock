@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {
   faEarthAmerica, faEllipsis,
@@ -9,6 +9,7 @@ import {
   faPhone,
   faTrashCan
 } from "@fortawesome/free-solid-svg-icons";
+import {ClientDto} from "../../../gs-api/src/models/client-dto";
 @Component({
   selector: 'app-detail-client-fournisseur',
   standalone: true,
@@ -30,4 +31,7 @@ export class DetailClientFournisseurComponent {
   protected readonly faFontAwesome = faFontAwesome;
   protected readonly faEllipsis = faEllipsis;
   protected readonly faPencil = faPencil;
+
+  @Input()
+  clientFournisseur: any = {};
 }

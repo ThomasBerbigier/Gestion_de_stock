@@ -12,10 +12,10 @@ export interface FindById2$Params {
   idFournisseur: number;
 }
 
-export function findById2(http: HttpClient, rootUrl: string, params: FindById2$Params, context?: HttpContext): Observable<StrictHttpResponse<FournisseurDto>> {
+export function findById2(http: HttpClient, rootUrl: string, params: number, context?: HttpContext | undefined): Observable<StrictHttpResponse<FournisseurDto>> {
   const rb = new RequestBuilder(rootUrl, findById2.PATH, 'get');
   if (params) {
-    rb.path('idFournisseur', params.idFournisseur, {"style":"simple","explode":false});
+    rb.path('idFournisseur', params, {"style":"simple","explode":false});
   }
 
   return http.request(

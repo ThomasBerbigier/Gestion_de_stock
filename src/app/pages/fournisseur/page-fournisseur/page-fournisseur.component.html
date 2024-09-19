@@ -10,10 +10,9 @@
     </div>
   </div>
   <div class="col m-3">
-    <app-detail-client-fournisseur></app-detail-client-fournisseur>
-    <app-detail-client-fournisseur></app-detail-client-fournisseur>
-    <app-detail-client-fournisseur></app-detail-client-fournisseur>
-    <app-detail-client-fournisseur></app-detail-client-fournisseur>
+    <app-detail-client-fournisseur
+    *ngFor="let fournisseur of listFournisseur"
+    [clientFournisseur]="fournisseur"></app-detail-client-fournisseur>
   </div>
   <div class="row mb-3 text-center">
     <app-pagination></app-pagination>

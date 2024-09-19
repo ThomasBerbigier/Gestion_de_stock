@@ -11,7 +11,9 @@ export interface DeleteById$Params {
   idClient: number;
 }
 
-export function deleteById(http: HttpClient, rootUrl: string, params: DeleteById$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+export function deleteById(http: HttpClient, rootUrl: string, params: {
+  idClient: number
+}, context?: HttpContext | undefined): Observable<StrictHttpResponse<void>> {
   const rb = new RequestBuilder(rootUrl, deleteById.PATH, 'delete');
   if (params) {
     rb.path('idClient', params.idClient, {"style":"simple","explode":false});
