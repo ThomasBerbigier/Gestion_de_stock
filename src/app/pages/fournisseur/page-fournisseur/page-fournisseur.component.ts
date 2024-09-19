@@ -7,7 +7,7 @@ import {PaginationComponent} from "../../../composants/pagination/pagination.com
 import {Router} from "@angular/router";
 import {CltfrnService} from "../../../services/cltfrn/cltfrn.service";
 import {FournisseurDto} from "../../../../gs-api/src/models/fournisseur-dto";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-page-fournisseur',
@@ -16,7 +16,8 @@ import {NgForOf} from "@angular/common";
     BouttonActionComponent,
     DetailClientFournisseurComponent,
     PaginationComponent,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './page-fournisseur.component.html',
   styleUrl: './page-fournisseur.component.scss'
@@ -24,6 +25,7 @@ import {NgForOf} from "@angular/common";
 export class PageFournisseurComponent implements OnInit {
 
   listFournisseur: Array<FournisseurDto> = [];
+  errorMsg = '';
 
   constructor(
     private router: Router,
@@ -44,5 +46,13 @@ export class PageFournisseurComponent implements OnInit {
 
   nouveauFournisseur(): void {
     this.router.navigate(['nouveauFournisseur'])
+  }
+
+  handleSuppression(event: any): void {
+    if(event === 'success') {
+      this.findAllFournisseurs();
+    } else {
+      this.errorMsg = event;
+    }
   }
 }

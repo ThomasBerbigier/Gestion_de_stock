@@ -8,7 +8,7 @@ import {
 import {Router} from "@angular/router";
 import {CltfrnService} from "../../../services/cltfrn/cltfrn.service";
 import {ClientDto} from "../../../../gs-api/src/models/client-dto";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-page-client',
@@ -18,7 +18,8 @@ import {NgForOf} from "@angular/common";
     DetailArticleComponent,
     PaginationComponent,
     DetailClientFournisseurComponent,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './page-client.component.html',
   styleUrl: './page-client.component.scss'
@@ -26,6 +27,7 @@ import {NgForOf} from "@angular/common";
 export class PageClientComponent implements OnInit {
 
   listClient: Array<ClientDto> = [];
+  errorMsg = '';
 
   constructor(
     private router: Router,
@@ -45,5 +47,13 @@ export class PageClientComponent implements OnInit {
 
   nouveauClient(): void {
     this.router.navigate(['nouveauClient'])
+  }
+
+  handleSuppression(event: any): void {
+    if(event === 'success') {
+      this.findAllclients();
+    } else {
+      this.errorMsg = event;
+    }
   }
 }
