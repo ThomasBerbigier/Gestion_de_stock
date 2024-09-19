@@ -78,6 +78,14 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'nouveauClient/:id',
+        component: NouveauClientFournisseurComponent,
+        canActivate: [applicationGuard],
+        data: {
+          origin: 'client'
+        }
+      },
+      {
         path: 'commandesClients',
         component: PageCommandeClientsFournisseursComponent,
         canActivate: [applicationGuard],
@@ -100,6 +108,14 @@ export const routes: Routes = [
       },
       {
         path: 'nouveauFournisseur',
+        component: NouveauClientFournisseurComponent,
+        canActivate: [applicationGuard],
+        data: {
+          origin: 'fournisseur'
+        }
+      },
+      {
+        path: 'nouveauFournisseur/:id',
         component: NouveauClientFournisseurComponent,
         canActivate: [applicationGuard],
         data: {
