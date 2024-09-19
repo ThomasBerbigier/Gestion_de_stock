@@ -3,7 +3,7 @@ import {DetailArticleComponent} from "../../../composants/detail-article/detail-
 import {PaginationComponent} from "../../../composants/pagination/pagination.component";
 import {BouttonActionComponent} from "../../../composants/boutton-action/boutton-action.component";
 import {Router} from "@angular/router";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {ArticleDto} from "../../../../gs-api/src/models/article-dto";
 import {ArticleService} from "../../../services/article/article.service";
 
@@ -14,7 +14,8 @@ import {ArticleService} from "../../../services/article/article.service";
     DetailArticleComponent,
     PaginationComponent,
     BouttonActionComponent,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './page-article.component.html',
   styleUrl: './page-article.component.scss'
@@ -22,20 +23,32 @@ import {ArticleService} from "../../../services/article/article.service";
 export class PageArticleComponent implements OnInit{
 
   listeArticle: Array<ArticleDto> = [];
+  errorMsg = '';
 
   constructor(
     private router: Router,
     private articleService: ArticleService,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.findListArticle();
+  }
+
+  findListArticle(): void {
     this.articleService.findAllArticles()
       .subscribe( articles => {
         this.listeArticle = articles;
-      })
-  }
+      })}
 
   nouvelArticle(): void {
     this.router.navigate(['NouvelArticle']);
+  }
+
+  handleSuppression(event: any): void {
+    if(event === 'success') {
+      this.findListArticle()
+    } else {
+      this.errorMsg = event;
+    }
   }
 }

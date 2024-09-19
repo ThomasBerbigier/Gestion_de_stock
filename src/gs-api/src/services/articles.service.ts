@@ -287,7 +287,7 @@ export class ArticlesService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  delete7$Response(params: Delete7$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  delete7$Response(params: number, context?: HttpContext | undefined): Observable<StrictHttpResponse<void>> {
     return delete7(this.http, this.rootUrl, params, context);
   }
 
@@ -301,7 +301,7 @@ export class ArticlesService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  delete7(params: Delete7$Params, context?: HttpContext): Observable<void> {
+  delete7(params: number, context?: HttpContext): Observable<void> {
     return this.delete7$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
     );

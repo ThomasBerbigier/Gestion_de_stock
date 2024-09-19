@@ -30,4 +30,11 @@ export class ArticleService {
     }
       return of();
   }
+
+  deleteArticle(idArticle: number): Observable<any> {
+    if(idArticle) {
+      return this.articlesService.delete7(idArticle);
+    }
+    return of();
+  }
 }
