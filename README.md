@@ -1,27 +1,64 @@
-# ProjetAngular
+# 🗃️ Gestion de Stock - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+## Description
+Ce projet est une application de gestion de stock développée en **Angular** pour le front-end et **Spring Boot** pour le back-end. Elle permet de gérer des profils d'entreprise, des catégories d'articles, des mouvements de stock, ainsi que les commandes clients et fournisseurs. L'application assure un suivi en temps réel des stocks et permet de gérer les utilisateurs, clients, et fournisseurs associés à chaque entreprise.
 
-## Development server
+## Fonctionnalités Principales
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Gestion des entreprises** : Créer et gérer des profils d'entreprise.
+- **Gestion des articles et des stocks** : Gérer des catégories d'articles et suivre les mouvements de stock en temps réel.
+- **Commandes clients et fournisseurs** : Créer et gérer les commandes, et suivre les entrées et sorties de stock.
+- **Tableau de bord** : Visualiser l'état du stock en temps réel et effectuer des ajustements.
+- **Gestion des utilisateurs** : Gérer les utilisateurs, clients, et fournisseurs liés à chaque entreprise.
 
-## Code scaffolding
+## Prérequis
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Node.js** : Version 20.10.0
+- **npm** : Version 10.8.2
+- **Angular CLI** : Version 17.3.8
+- **Git** : Pour cloner le dépôt et gérer les versions
 
-## Build
+## Installation et Configuration de l'Environnement
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Cloner le dépôt** :
+   ```bash
+   git clone https://github.com/ThomasBerbigier/Gestion_de_stock
 
-## Running unit tests
+2. **Installer les dépendances** :
+   - Accédez au dossier du projet et exécutez :
+     ```bash
+     npm install
+     ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. **Lancer le serveur de développement** :
+   - Exécutez la commande suivante pour démarrer l'application en local :
+     ```bash
+     ng serve
+     ```
+   - Ouvrez votre navigateur et accédez à `http://localhost:4200/`.
 
-## Running end-to-end tests
+## Stack Technique
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Frontend** :  
+  ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+  ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+  ![FontAwesome](https://img.shields.io/badge/Font_Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white)
 
-## Further help
+- **Back-end & API** :  
+  ![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
+  ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+  ![OpenAPI](https://img.shields.io/badge/OpenAPI-85EA2D?style=for-the-badge&logo=openapi-initiative&logoColor=black)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Outils de développement** :  
+  ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ_IDEA-000000?style=for-the-badge&logo=intellij-idea&logoColor=white)
+  ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+  ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+
+## Défis Techniques
+
+- **Intégration Angular & Spring Boot** : Assurer la communication fluide entre le front-end Angular et le back-end Spring Boot.
+- **Sécurisation des données** : Gestion sécurisée des utilisateurs avec **Spring Security** et **JWT**.
+- **Génération de services et modèles** : Utilisation d'OpenAPI pour garantir une cohérence entre le front-end et le back-end.
+
+---
+
